@@ -1,9 +1,0 @@
-= jQuery Utils wiki index =
-
-This wiki will be used for documentation purpose.
-
-
-== Available utilities ==
-
-  * anchorHandler
-  * delayed observer
