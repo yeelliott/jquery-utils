@@ -1,5 +1,5 @@
 #labels Featured
 == Wiki index ==
 
-  - AnchorHandler
-  - DelayedObserver
+  * AnchorHandler
+  * DelayedObserver
