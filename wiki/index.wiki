@@ -5,5 +5,5 @@ This wiki will be used for documentation purpose.
 
 == Available utilities ==
 
-  * anchor handler
+  * anchorHandler
   * delayed observer
