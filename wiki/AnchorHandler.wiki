@@ -1,0 +1,17 @@
+= jQuery-utils anchorHandler = 
+
+Quick example:
+
+{{{
+
+$.anchorHandler
+    .add(/\#show\-something/,   function(){ /* ..*/  })
+    .add(/\#trigger\-event/,    someEvent)
+    .add(/\#/,                  smoothScrollToLink);
+}}}
+
+Note: the add method also accept arrays.
+
+----
+
+IndexPage
