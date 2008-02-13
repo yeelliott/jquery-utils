@@ -16,6 +16,12 @@ $(document).ready(function(){
         }});
 }}}
 
+== Tested browsers ===
+
+  * Microsoft Internet Explorer 7 - Windows XP/MC
+  * Mozilla Firefox 2 - Windows XP/MC / Ubuntu
+  * Gnome Epiphany - Ubuntu
+
 ----
 
 IndexPage
