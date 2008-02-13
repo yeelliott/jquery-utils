@@ -1,6 +1,10 @@
 = jQuery-utils anchorHandler = 
 
-Quick example:
+This jQuery plugin allow to use regular expressions to attach events on url hanchor.. it's less complicated and more useful than it sounds :)
+
+It's a clever and neat way to handle custom URLs that I borrowed from django's clever [http://www.djangoproject.com/documentation/url_dispatch/ URL dispatcher].
+
+== Example ==
 
 {{{
 
@@ -8,6 +12,7 @@ $.anchorHandler
     .add(/\#show\-something/,   function(){ /* ..*/  })
     .add(/\#trigger\-event/,    someEvent)
     .add(/\#/,                  smoothScrollToLink);
+
 }}}
 
 Note: the add method also accept arrays.
