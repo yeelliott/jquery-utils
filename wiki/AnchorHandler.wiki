@@ -1,4 +1,4 @@
-= jQuery-utils anchorHandler = 
+= jQuery-utils: anchorHandler = 
 
 This jQuery plugin allow to use regular expressions to attach events on url hanchor.. it's less complicated and more useful than it sounds :)
 
