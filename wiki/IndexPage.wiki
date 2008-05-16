@@ -1,5 +1,6 @@
 #labels Featured
 == Wiki index ==
 
-  * AnchorHandler
-  * DelayedObserver
+  * jquery AnchorHandler
+  * jquery DelayedObserver
+  * jquery Strings
