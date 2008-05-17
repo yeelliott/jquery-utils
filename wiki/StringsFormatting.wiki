@@ -1,0 +1,11 @@
+# jquery.strings.js - String operations
+
+= Introduction =
+
+jquery.strings provide extra level of string manipulation
+
+
+= Features =
+
+  * StringFormat (Python 3K Advanced String Formatting implementation)
+  * Sprintf (to come)
