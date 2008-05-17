@@ -1,6 +1,10 @@
 #labels Featured
+jQuery utils is a set of jQuery plugins I made or borrowed that I often reuse in my projects, so I created this project in hope it might serve somebody back. jQuery is such a great free open source project, I feel that giving my work back to the community is the less I could do.
+
+Don't hesitate to submit comments, bugs or patches.
+
 == Utilities ==
 
-  * AnchorHandler
-  * DelayedObserver
-  * StringsFormatting
+|| AnchorHandler  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). ||
+|| DelayedObserver || A delayed observer, useful when grabbing keyboard input ||
+|| StringsFormatting  || Various string formatting method (by now it only has a format method inspired by the Advanced String Formatting module in Python3K, sprintf is expceted next) ||
