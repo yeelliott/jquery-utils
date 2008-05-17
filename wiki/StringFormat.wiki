@@ -62,9 +62,13 @@ $.format('{0:U}bc', 'a') // return Abc
 || *Flag* || *Meaning* ||
 || # || The value conversion will use the ``alternate form'' (where defined below). ||
 || 0 || The conversion will be zero padded for numeric values. ||
-|| - || The converted value is left adjusted (overrides the "0" conversion if both are given). ||
-||   ||	(a space) A blank should be left before a positive number (or empty string) produced by a signed conversion. ||
-|| + || A sign character ("+" or "-") will precede the conversion (overrides a "space" flag). ||
+|| - || The converted value is left adjusted (overrides the "0" conversion if both are given). (1) ||
+||   ||	(a space) A blank should be left before a positive number (or empty string) produced by a signed conversion. (1) ||
+|| + || A sign character ("+" or "-") will precede the conversion (overrides a "space" flag). (1) ||
+
+ **Note:**
+
+ # Not supported yet
 
 === Conversions types ===
 
