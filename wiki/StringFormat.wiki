@@ -57,6 +57,14 @@ $.format('{0:U}bc', 'a') // return Abc
  * Python zero pad exponent (10 -> 1.0e+01), not JavaScript (10 -> 1.0e+1)
  * My repr implementation is not like the python one
 
+=== The conversion flags ===
+
+|| *Flag* || *Meaning* ||
+|| # || The value conversion will use the ``alternate form'' (where defined below). ||
+|| 0 || The conversion will be zero padded for numeric values. ||
+|| - || The converted value is left adjusted (overrides the "0" conversion if both are given). ||
+||   ||	(a space) A blank should be left before a positive number (or empty string) produced by a signed conversion. ||
+|| + || A sign character ("+" or "-") will precede the conversion (overrides a "space" flag). ||
 
 === Conversions types ===
 
@@ -77,7 +85,7 @@ $.format('{0:U}bc', 'a') // return Abc
 || r ||	String (converts any JavaScript object using repr()). || (5) ||
 || s ||	String (converts any JavaScript object using toString()). ||(6) ||
 
-Notes:
+**Notes:**
 
  # The alternate form causes a leading zero ("0") to be inserted between left-hand padding and the formatting of the number if the leading character of the result is not already a zero. 
  # The alternate form causes a leading '0x' or '0X' (depending on whether the "x" or "X" format was used) to be inserted between left-hand padding and the formatting of the number if the leading character of the result is not already a zero. 
@@ -90,7 +98,6 @@ Source: http://docs.python.org/lib/typesseq-strings.html
 
 === Tested browsers ===
 
-
  * Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)
  * Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; .NET CLR 2.0.50727)
  * Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Media Center PC 3.0; .NET CLR 1.0.3705)
@@ -102,11 +109,9 @@ Source: http://docs.python.org/lib/typesseq-strings.html
  * Opera/9.50 (X11; Linux i686; U; en)
  * Mozilla/5.0 (Windows; U; Windows NT 5.1; fr-FR) AppleWebKit/525.18 (KHTML, like Gecko) Version/3.1.1 Safari/525.17
 
-
 Note: if you pass/fail the test suite on other browser please send me your browser string with the results, thanks.
 
 === TODO ===
-
 
  * -|+|\s flags handling
  * sprintf
@@ -115,9 +120,7 @@ Note: if you pass/fail the test suite on other browser please send me your brows
  * jQuery.fn extention (jformat)
  * create documentation (when the API will be freezed)
 
-
 === References ===
-
 
  * [http://docs.python.org/lib/typesseq-strings.html Conversion types]
  * [http://www.python.org/dev/peps/pep-3101/ Implementation details]
