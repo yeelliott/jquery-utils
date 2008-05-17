@@ -109,8 +109,8 @@ Note: if you pass/fail the test suite on other browser please send me your brows
 || g ||	Floating point format. Uses exponential format if exponent is greater than -4 or less than precision, decimal format otherwise. || (4) ||
 || G ||	Floating point format. Uses exponential format if exponent is greater than -4 or less than precision, decimal format otherwise. || (4) ||
 || c ||	Single character (accepts integer or single character string). 	 || ||
-|| r ||	String (converts any python object using repr()). || (5) ||
-|| s ||	String (converts any python object using str()). ||(6) ||
+|| r ||	String (converts any JavaScript object using repr()). || (5) ||
+|| s ||	String (converts any JavaScript object using toString()). ||(6) ||
 
 Notes:
 
