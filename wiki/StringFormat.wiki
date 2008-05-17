@@ -118,8 +118,7 @@ Notes:
  # The alternate form causes a leading '0x' or '0X' (depending on whether the "x" or "X" format was used) to be inserted between left-hand padding and the formatting of the number if the leading character of the result is not already a zero. 
  # The alternate form causes the result to always contain a decimal point, even if no digits follow it. The precision determines the number of digits after the decimal point and defaults to 6. 
  # The alternate form causes the result to always contain a decimal point, and trailing zeroes are not removed as they would otherwise be. The precision determines the number of significant digits before and after the decimal point and defaults to 6. 
- # The %r conversion was added in Python 2.0.
-The precision determines the maximal number of characters used. 
+ # The %r conversion was added in Python 2.0. The precision determines the maximal number of characters used. 
  #  If the object or format provided is a unicode string, the resulting string will also be unicode. The precision determines the maximal number of characters used. 
 
 Source: http://docs.python.org/lib/typesseq-strings.html
