@@ -91,3 +91,35 @@ Note: if you pass/fail the test suite on other browser please send me your brows
 
  * [http://docs.python.org/lib/typesseq-strings.html Conversion types]
  * [http://www.python.org/dev/peps/pep-3101/ Implementation details]
+
+
+=== Conversions types ===
+
+|| *Conversion* || *Meaning* || *Notes* ||
+|| d ||	Signed integer decimal. || || 	
+|| i ||	Signed integer decimal. || || 
+|| o ||	Unsigned octal. || (1) ||
+|| u ||	Unsigned decimal. || || 	
+|| x ||	Unsigned hexadecimal (lowercase). || (2) ||
+|| X ||	Unsigned hexadecimal (uppercase). || (2) ||
+|| e ||	Floating point exponential format (lowercase).  || (3) ||
+|| E ||	Floating point exponential format (uppercase). || (3) ||
+|| f ||	Floating point decimal format. || (3) ||
+|| F ||	Floating point decimal format. || (3) ||
+|| g ||	Floating point format. Uses exponential format if exponent is greater than -4 or less than precision, decimal format otherwise. || (4) ||
+|| G ||	Floating point format. Uses exponential format if exponent is greater than -4 or less than precision, decimal format otherwise. || (4) ||
+|| c ||	Single character (accepts integer or single character string). 	 || ||
+|| r ||	String (converts any python object using repr()). || (5) ||
+|| s ||	String (converts any python object using str()). ||(6) ||
+
+Notes:
+
+ # The alternate form causes a leading zero ("0") to be inserted between left-hand padding and the formatting of the number if the leading character of the result is not already a zero. 
+ # The alternate form causes a leading '0x' or '0X' (depending on whether the "x" or "X" format was used) to be inserted between left-hand padding and the formatting of the number if the leading character of the result is not already a zero. 
+ # The alternate form causes the result to always contain a decimal point, even if no digits follow it. The precision determines the number of digits after the decimal point and defaults to 6. 
+ # The alternate form causes the result to always contain a decimal point, and trailing zeroes are not removed as they would otherwise be. The precision determines the number of significant digits before and after the decimal point and defaults to 6. 
+ # The %r conversion was added in Python 2.0.
+The precision determines the maximal number of characters used. 
+ #  If the object or format provided is a unicode string, the resulting string will also be unicode. The precision determines the maximal number of characters used. 
+
+Source: http://docs.python.org/lib/typesseq-strings.html
