@@ -5,6 +5,15 @@ Don't hesitate to submit comments, bugs or patches.
 
 == Utilities ==
 
-|| AnchorHandler  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). ||
-|| DelayedObserver || A delayed observer, useful when grabbing keyboard input ||
-|| StringsFormatting  || Various string formatting method (by now it only has a format method inspired by the Advanced String Formatting module in Python3K, sprintf is expceted next) ||
+|| * Utility* || *Description* || *Author* ||
+|| AnchorHandler  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). || [http://haineault.com Maxime Haineault] ||
+|| countDown || A simple countdown script || [http://haineault.com Maxime Haineault] ||
+|| cyCle || A simple cycle script, useful for banner rotation ||[http://haineault.com Maxime Haineault] ||
+|| DelayedObserver || A delayed observer, useful when grabbing keyboard input ||[http://haineault.com Maxime Haineault] ||
+|| flAsh || Plugin for Flash movie inclusion || [http://jquery.lukelutman.com/plugins/flash Luke Lutman] ||
+|| iFixpng || fixes the IE broken PNG support || [http://jquery.khurshid.com Kush M.] ||
+|| StringsFormatting  || Various string formatting method (by now it only has a format method inspired by the Advanced String Formatting module in Python3K, sprintf is expceted next) || [http://haineault.com Maxime Haineault] ||
+|| uTils || Various utility that I don't know where to put || [http://haineault.com Maxime Haineault] ||
+|| valid || Validation libary || [http://haineault.com Maxime Haineault] ||
+
+*Note*: If an utility is not documented in a wiki page it means that its API will most likely change
