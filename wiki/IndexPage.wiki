@@ -1,6 +1,6 @@
 #labels Featured
-== Wiki index ==
+== Utilities ==
 
-  * jquery AnchorHandler
-  * jquery DelayedObserver
-  * jquery StringsFormatting
+  * AnchorHandler
+  * DelayedObserver
+  * StringsFormatting
