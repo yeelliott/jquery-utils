@@ -66,7 +66,7 @@ $.format('{0:U}bc', 'a') // return Abc
 ||   ||	(a space) A blank should be left before a positive number (or empty string) produced by a signed conversion. (1) ||
 || + || A sign character ("+" or "-") will precede the conversion (overrides a "space" flag). (1) ||
 
- **Note:**
+**Note:**
 
  # Not supported yet
 
