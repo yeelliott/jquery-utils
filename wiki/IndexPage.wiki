@@ -3,4 +3,4 @@
 
   * jquery AnchorHandler
   * jquery DelayedObserver
-  * jquery Strings
+  * jquery StringsFormatting
