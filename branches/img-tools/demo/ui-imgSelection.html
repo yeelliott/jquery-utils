@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <link rel="Stylesheet" media="screen" href="data/styles.css" />
+   <link rel="Stylesheet" media="screen" href="data/img.selection.css" />
+   <script type="text/javascript" src="data/jquery.min.js"></script>
+   <script type="text/javascript" src="data/ui.js"></script>
+   <script type="text/javascript" src="../src/jquery.strings.js"></script>
+   <script type="text/javascript" src="../src/ui.imgSelection.js"></script>
+   <script type="text/javascript">
+       $(document).ready(function(){
+            $('img#demo-1').imgSelection({
+                input: '#demo-1-value'
+            });
+            $('img#demo-areaInfos').imgSelection({
+                areaInfos: true
+            });
+            $('img#demo-overlay').imgSelection({
+                overlay: true
+            });
+            $('img#demo-comments').imgSelection({
+                draggable: false,
+                resizable: false,
+                comments:  true,
+                multiple:  true,
+                initials: [
+                    {comment: 'nice balloon !', x:135, y:39, w:100, h:100},
+                    {comment: 'hammer time !', x:396, y:80, w:118, h:270}
+                ]
+            });
+       });
+   </script>
+   <style>
+    .ui-imgSelection {
+        cursor:crosshair;
+    }
+    .ui-imgSelection-area {
+        border:1px solid #fff;
+    }
+    .ui-imgSelection .ui-imgSelection-focused {
+        z-index:600;
+        opacity:1.0;
+        background:transparent;
+        border:2px solid #55FF00;
+    }
+    .ui-imgSelection-area.hover .ui-imgSelection-focused {
+        display:block!important;
+        border:2px solid #fff;
+        cursor:pointer;
+        z-index:500;
+        background:#fff;
+        opacity:0.15;
+    }
+    .ui-imgSelection.hover .ui-imgSelection-area.hover {
+        z-index:700;
+    }
+    .ui-imgSelection .ui-imgSelection-area.ui-draggable {
+        cursor:move;
+    }
+    .ui-imgSelection-area .ui-resizable-handle,
+    .ui-imgSelection-focused .ui-resizable-handle {
+        display:none!important;
+    }
+    .ui-imgSelection.hover .ui-imgSelection-area .ui-resizable-handle,
+    .ui-imgSelection.hover .ui-imgSelection-focused .ui-resizable-handle {
+        display:block!important;
+    }
+    .ui-imgSelection-comments,
+    .ui-imgSelection-infos {
+        color:#666;
+        font-size:0.7em;
+        padding:4px 0;
+        background:#eee;
+        border-width:0 1px 1px 1px;
+        text-align:center;
+    }
+    .ui-imgSelection-overlay-active {
+        background:#fff!important;
+        opacity:0.15!important;
+    }
+    .ui-imgSelection-focused {
+    }
+    </style>
+    </head>
+    <body id="body">
+        <h2>ui.imgSelection.js</h2>
+        <h3>Basic selection</h3>
+        <p>
+            <input type="text" value="" id="demo-1-value" style="width:500px;">
+        </p>
+        <p>
+            <img id="demo-1" src="data/banksy-02.jpg" alt="" border="0" />
+        </p>
+        <h3>Code</h3>
+        <code><pre>$('img#demo-1').imgSelection({
+     onSelect: function(e, ui) {
+         var coords = $(this.element).imgSelection('serialize', e.target);
+         $('#demo-1-value').val(coords);
+     }
+});
+// or (same as above)
+$('img#demo-1').imgSelection({
+     input: '#demo-1-value'
+});</pre></code>
+        <h2>plugins</h2>
+        <h3>Overlay</h3>
+        <p>
+            <img id="demo-overlay" src="data/banksy-03.jpg" alt="" border="0" />
+        </p>
+        <h3>areaInfos</h3>
+        <p>
+            <img id="demo-areaInfos" src="data/banksy-05.jpg" alt="" border="0" />
+        </p>
+        <br />
+        <code><pre>$('img#demo-areaInfos').imgSelection({
+                areaInfos: true
+});</pre></code>
+        <h3>Comments</h3>
+        <p>
+            <img id="demo-comments" src="data/banksy-01.jpg" alt="" border="0" />
+        </p>
+        <br/>
+        <code><pre>$('img#demo-comments').imgSelection({
+    draggable: false,
+    resizable: false,
+    comments:  true,
+    initials: [
+        {comment: 'nice balloon !', x:135, y:39, w:100, h:100},
+        {comment: 'hammer time !', x:396, y:80, w:118, h:270}
+    ]
+});</pre></code>
+    </body>
+</html>
