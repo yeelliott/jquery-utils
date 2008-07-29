@@ -137,6 +137,9 @@ $.widget('ui.imgSelection', {
                         self.options.onSelect.apply(self, [e, ui]);
                         self.propagate('stop',   e, self); } }));
             }
+            if (self.options.multiple) {
+                $(self.canevas).addClass('ui-imgSelection-multiple');
+            }
             $(area).css(c).show('slow');
         });
     },
