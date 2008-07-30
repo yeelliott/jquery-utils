@@ -1,4 +1,4 @@
-/* jQuery ui.imgCropTool.js - 0.1
+/* jQuery ui.imgTools.js - 0.1
  *
  * (c) Maxime Haineault <haineault@gmail.com>
  * http://haineault.com 
@@ -15,7 +15,7 @@
 
 $.ui.log = (typeof(console) != 'undefined')? console.log: function(){};
 
-$.widget('ui.imgCropTool', {
+$.widget('ui.imgTools', {
     plugins: {},
 	init: function(){
 		var self = this;
@@ -25,11 +25,11 @@ $.widget('ui.imgCropTool', {
         self.interface = {
             originalWidth:  w,
             originalHeight: h,
-            wrapper: $('<div class="ui-imgCropTool" />').width(w),
-            menu:    $('<ul class="ui-imgCropTool-menu" />'),
-            status:  $('<div class="ui-imgCropTool-status" />').text('status'),
-            size:    $('<div class="ui-imgCropTool-size" />').text(''),
-            tools:   $('<div class="ui-imgCropTool-tools" />').width(w)
+            wrapper: $('<div class="ui-imgTools" />').width(w),
+            menu:    $('<ul class="ui-imgTools-menu" />'),
+            status:  $('<div class="ui-imgTools-status" />').text('status'),
+            size:    $('<div class="ui-imgTools-size" />').text(''),
+            tools:   $('<div class="ui-imgTools-tools" />').width(w)
         };
         $(self.element).wrap(self.interface.wrapper)
             .hover(function(){ $(this).parent().addClass('hover'); }, function(){ $(this).parent().removeClass('hover'); });
@@ -52,7 +52,7 @@ $.widget('ui.imgCropTool', {
     
     open: function() {
         var self    = this;
-        $(self.element).addClass('ui-imgCropTool-cropping');
+        $(self.element).addClass('ui-imgTools-cropping');
         $(self.interface.wrapper).slideDown();
         self.propagate('open', {}, self);
     },
@@ -67,7 +67,7 @@ $.widget('ui.imgCropTool', {
 });
 
 
-$.extend($.ui.imgCropTool, {
+$.extend($.ui.imgTools, {
     getter:   '',
     regional: [],
     defaults: {
@@ -80,7 +80,7 @@ $.extend($.ui.imgCropTool, {
     }
 });
 
-$.ui.imgCropTool.regional[''] = {
+$.ui.imgTools.regional[''] = {
     crop:   'crop',
     resize: 'resize',
     save:   'apply',
@@ -90,10 +90,10 @@ $.ui.imgCropTool.regional[''] = {
 /*
  * imgSelection plugins
  */
-$.ui.plugin.add('imgCropTool', 'resize', {
+$.ui.plugin.add('imgTools', 'resize', {
     init: function(e, ui){
         self = ui;
-        var resize = $('<div class="ui-imgCropTool-resize" />').hide();
+        var resize = $('<div class="ui-imgTools-resize" />').hide();
         var slider = $('<div class="ui-slider"><div class="ui-slider-handle" /></div>').slider();
         var save   = $('<input type="button" value="Save" />');
         var cancel = $('<input type="button" value="Cancel" />');
@@ -126,14 +126,14 @@ $.ui.plugin.add('imgCropTool', 'resize', {
 });
 
 
-/* English (UTF-8) initialisation for the jQuery UI imgCropTool plugin. */
+/* English (UTF-8) initialisation for the jQuery UI imgTools plugin. */
 /* Written by Maxime Haineault (haineault@gmail.com). */
 jQuery(function($){
-	$.ui.imgCropTool.regional['fr'] = {
+	$.ui.imgTools.regional['fr'] = {
             crop:   'cadrer',
             resize: 'redimenssioner',
             save:   'appliquer',
             cancel: 'annuler'
     };
-	//$.ui.imgCropTool.setDefaults($.ui.imgCropTool.regional['fr']);
+	//$.ui.imgTools.setDefaults($.ui.imgTools.regional['fr']);
 });
