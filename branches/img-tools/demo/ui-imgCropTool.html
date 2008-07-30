@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+   <link rel="Stylesheet" media="screen" href="data/styles.css" />
+   <link rel="Stylesheet" media="screen" href="themes/flora/flora.all.css" />
+   <link rel="Stylesheet" media="screen" href="data/img.selection.css" />
+   <script type="text/javascript" src="data/jquery.min.js"></script>
+   <script type="text/javascript" src="data/ui.js"></script>
+   <script type="text/javascript" src="../src/ui.window.js"></script>
+   <script type="text/javascript" src="../src/ui.imgSelection.js"></script>
+   <script type="text/javascript" src="../src/ui.imgCropTool.js"></script>
+   <script type="text/javascript">
+       $(document).ready(function(){
+            $('#demo-1').imgCropTool();
+       });
+   </script>
+   <style>
+    .ui-imgCropTool {
+        background:#eee;
+    }
+    img.ui-imgCropTool-cropping {
+    }
+    .ui-imgCropTool-tools {
+        position:absolute;
+        background:#eee;
+        margin-top:-42px;
+        opacity:0.3;
+    }
+    .ui-imgCropTool.hover .ui-imgCropTool-tools {
+        opacity:1;
+    }
+
+    /* menu */
+    .ui-imgCropTool-menu {
+        position:absolute;
+        background:#ccc;
+        margin-top:-28px;
+        list-style:none;
+        padding:0!important;
+        opacity:0.3;
+    }
+    .ui-imgCropTool.hover .ui-imgCropTool-menu {
+        opacity:1;
+    }
+    .ui-imgCropTool-menu li {
+        float:left;
+        list-style:none!important;
+        margin:1px 1px 0 1px!important;
+    }
+    .ui-imgCropTool-menu li a {
+        font-size:.8em;
+        display:block;
+        background:#eee;
+        padding:6px 12px;
+        text-decoration:none;
+    }
+    .ui-imgCropTool-menu li a:hover {
+        background:#def;
+    }
+
+    /* plugins */
+    .ui-imgCropTool-resize {
+        margin:10px;
+    }
+    .ui-imgCropTool-resize .ui-slider {
+        float:left;
+    }
+    .ui-imgCropTool-resize input {
+        font-size:.7em;
+        margin-left:3px;
+    }
+    </style>
+    </head>
+    <body id="body">
+        <h2>ui.imgCropTool.js</h2>
+        <a href="http://www.banksy.co.uk" class="related-links documentation">Artworks are from my favorite street artist, <em>Banksy</em>.</a>
+        <h3>Basic</h3>
+        <p>
+            <img id="demo-1" src="data/banksy-04.jpg" />
+        </p>
+        <h3>Code</h3>
+        <code><pre></pre></code>
+    </body>
+</html>
