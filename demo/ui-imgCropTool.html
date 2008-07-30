@@ -8,30 +8,30 @@
    <script type="text/javascript" src="data/ui.js"></script>
    <script type="text/javascript" src="../src/ui.window.js"></script>
    <script type="text/javascript" src="../src/ui.imgSelection.js"></script>
-   <script type="text/javascript" src="../src/ui.imgCropTool.js"></script>
+   <script type="text/javascript" src="../src/ui.imgTools.js"></script>
    <script type="text/javascript">
        $(document).ready(function(){
-            $('#demo-1').imgCropTool();
+            $('#demo-1').imgTools();
        });
    </script>
    <style>
-    .ui-imgCropTool {
+    .ui-imgTools {
         background:#eee;
     }
-    img.ui-imgCropTool-cropping {
+    img.ui-imgTools-cropping {
     }
-    .ui-imgCropTool-tools {
+    .ui-imgTools-tools {
         position:absolute;
         background:#eee;
         margin-top:-42px;
         opacity:0.3;
     }
-    .ui-imgCropTool.hover .ui-imgCropTool-tools {
+    .ui-imgTools.hover .ui-imgTools-tools {
         opacity:1;
     }
 
     /* menu */
-    .ui-imgCropTool-menu {
+    .ui-imgTools-menu {
         position:absolute;
         background:#ccc;
         margin-top:-28px;
@@ -39,40 +39,40 @@
         padding:0!important;
         opacity:0.3;
     }
-    .ui-imgCropTool.hover .ui-imgCropTool-menu {
+    .ui-imgTools.hover .ui-imgTools-menu {
         opacity:1;
     }
-    .ui-imgCropTool-menu li {
+    .ui-imgTools-menu li {
         float:left;
         list-style:none!important;
         margin:1px 1px 0 1px!important;
     }
-    .ui-imgCropTool-menu li a {
+    .ui-imgTools-menu li a {
         font-size:.8em;
         display:block;
         background:#eee;
         padding:6px 12px;
         text-decoration:none;
     }
-    .ui-imgCropTool-menu li a:hover {
+    .ui-imgTools-menu li a:hover {
         background:#def;
     }
 
     /* plugins */
-    .ui-imgCropTool-resize {
+    .ui-imgTools-resize {
         margin:10px;
     }
-    .ui-imgCropTool-resize .ui-slider {
+    .ui-imgTools-resize .ui-slider {
         float:left;
     }
-    .ui-imgCropTool-resize input {
+    .ui-imgTools-resize input {
         font-size:.7em;
         margin-left:3px;
     }
     </style>
     </head>
     <body id="body">
-        <h2>ui.imgCropTool.js</h2>
+        <h2>ui.imgTools.js</h2>
         <a href="http://www.banksy.co.uk" class="related-links documentation">Artworks are from my favorite street artist, <em>Banksy</em>.</a>
         <h3>Basic</h3>
         <p>
