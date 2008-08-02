@@ -153,6 +153,11 @@ $.widget('ui.imgSelection', {
             w: $(area).width(),
             h: $(area).height()
         };
+    },
+    destroy: function() {
+        var self = this;
+        $(self.element).insertAfter(self.canevas);
+        $(self.canevas).remove();
     }
 });
 

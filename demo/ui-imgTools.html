@@ -16,14 +16,17 @@
    </script>
    <style>
     .ui-imgTools {
-        background:#eee;
+        display:inline;
     }
-    img.ui-imgTools-cropping {
+    .ui-imgTools-active {
     }
     .ui-imgTools-tools {
         position:absolute;
         background:#eee;
-        margin-top:-42px;
+        margin-top:-44px;
+        border:1px solid #ccc;
+        -moz-border-radius-topLeft:3px;
+        -moz-border-radius-topRight:3px;
         opacity:0.3;
     }
     .ui-imgTools.hover .ui-imgTools-tools {
@@ -39,6 +42,7 @@
         padding:0!important;
         opacity:0.3;
     }
+    .ui-imgTools-active .ui-imgTools-menu,
     .ui-imgTools.hover .ui-imgTools-menu {
         opacity:1;
     }
@@ -59,16 +63,65 @@
     }
 
     /* plugins */
-    .ui-imgTools-resize {
+    .ui-imgTools-plugin {
         margin:10px;
     }
-    .ui-imgTools-resize .ui-slider {
+    .ui-imgTools-plugin .ui-slider {
         float:left;
     }
-    .ui-imgTools-resize input {
+    .ui-imgTools-plugin input {
         font-size:.7em;
         margin-left:3px;
     }
+
+
+    /* imgSelection */
+    .ui-imgSelection {
+        cursor:crosshair;
+    }
+    .ui-imgSelection-area {
+        border:1px solid #fff;
+        cursor:pointer;
+    }
+    .ui-imgSelection .ui-imgSelection-focused {
+        z-index:600;
+        opacity:1.0;
+        background:transparent;
+        border:2px solid #55FF00;
+    }
+    .ui-imgTools-active .ui-imgSelection-focused,
+    .ui-imgSelection-area.hover .ui-imgSelection-focused {
+        display:block!important;
+        border:2px solid #fff;
+        cursor:pointer;
+        z-index:500;
+        background:#fff;
+        opacity:0.15;
+    }
+    .ui-imgSelection.hover .ui-imgSelection-area.hover {
+        z-index:700;
+    }
+    .ui-imgSelection .ui-imgSelection-area.ui-draggable {
+        cursor:move;
+    }
+    .ui-imgSelection.hover .ui-imgSelection-area .ui-resizable-handle,
+    .ui-imgSelection.hover .ui-imgSelection-focused .ui-resizable-handle {
+        display:block!important;
+    }
+    .ui-imgSelection-comments,
+    .ui-imgSelection-infos {
+        color:#666;
+        font-size:0.7em;
+        padding:4px 0;
+        background:#eee;
+        border-width:0 1px 1px 1px;
+        text-align:center;
+    }
+    .ui-imgSelection-overlay-active {
+        background:#fff!important;
+        opacity:0.15!important;
+    }
+
     </style>
     </head>
     <body id="body">
@@ -76,7 +129,7 @@
         <a href="http://www.banksy.co.uk" class="related-links documentation">Artworks are from my favorite street artist, <em>Banksy</em>.</a>
         <h3>Basic</h3>
         <p>
-            <img id="demo-1" src="data/banksy-04.jpg" />
+            <img id="demo-1" src="data/ImgTools.php?img=banksy-04.jpg" />
         </p>
         <h3>Code</h3>
         <code><pre></pre></code>
