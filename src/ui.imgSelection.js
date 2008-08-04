@@ -102,6 +102,7 @@ $.widget('ui.imgSelection', {
 
     createSelections: function(selections) {
         var self = this;
+        console.log(selections);
         var s = self.options.multiple && selections || selections.slice(0, 1);
         $.each(s, function(i, sel){
             var w = sel.w == -1 && self.coords.w || sel.w;
