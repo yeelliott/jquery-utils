@@ -69,19 +69,18 @@ $.widget('ui.imgSelection', {
     },
     
     focus: function(area, e, ui) {
+        var e  = {target: $(area).get(0) };
+        var ui = ui || this;
         if (!area) {
             var area = $('.ui-imgSelection-area', this.canevas).eq(0);
-            var e    = {target: $(area).get(0) };
-            var ui   = ui || this;
         }
         else if ($(area).get(0)) {
-            var area = (typeof(area) == 'number')? $('.ui-imgSelection-area', this.canevas).eq(0): $(area);
-            var e    = e || {target: $(area).get(0) };
-            var ui   = ui || this;
+            var area = (typeof(area) == 'number')? $('.ui-imgSelection-area', this.canevas).eq(area): $(area);
         }
         this.blur();
         $(area).addClass('ui-imgSelection-focused ui-resizable');
         this.propagate('areaFocus', e, ui);
+        return area;
     },
     blur: function(area, e, ui) {
         var area = area || $('.ui-imgSelection-area', this.canevas);
@@ -102,7 +101,6 @@ $.widget('ui.imgSelection', {
 
     createSelections: function(selections) {
         var self = this;
-        console.log(selections);
         var s = self.options.multiple && selections || selections.slice(0, 1);
         $.each(s, function(i, sel){
             var w = sel.w == -1 && self.coords.w || sel.w;
@@ -146,11 +144,14 @@ $.widget('ui.imgSelection', {
     },
 
     getArea: function(area, ui) {
-        var a = $(area).position();
+        var a = area || $('.ui-imgSelection-area', this.canevas).eq(0);
+        var p = $(area).position();
+
         return {
+            element: area,
             initial: $(area).data('imgSelection.initial'),
-            y: a.top  - ui.coords.top,
-            x: a.left - ui.coords.left,
+            y: p.top  - ui.coords.top,
+            x: p.left - ui.coords.left,
             w: $(area).width(),
             h: $(area).height()
         };
@@ -178,13 +179,23 @@ $.extend($.ui.imgSelection, {
         // plugins
         areaInfos: false,
         overlay:   false,
-        comments:  false
+        comments:  false,
+        autofocus: true
     }
 });
 
 /*
  * imgSelection plugins
  */
+
+$.ui.plugin.add('imgSelection', 'autofocus', {
+    init: function(e, ui){
+        setTimeout(function(){
+            $(ui.element).imgSelection('focus');
+        }, 200);
+    }
+});
+
 $.ui.plugin.add('imgSelection', 'input', {
     init: function(e, ui){
         input = $(ui.options.input);
