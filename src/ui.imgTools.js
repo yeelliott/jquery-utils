@@ -15,6 +15,15 @@
  * - crop: image opacity isn't reseted after plugin destroy
  * - crop: overlay doesn't play well with resize
  * - resize: when re-resizing if cancel is pressed the wrong "original" width is restored
+ *
+ * + scale
+ * + scale.save
+ * + scale.save -> crop
+ * ~ scale.save -> crop -> crop.save (wrong offset)
+ * + crop
+ * + crop.save
+ * + crop.save -> scale
+ * + crop.save -> scale -> scale save
  * */
 
 $.widget('ui.imgTools', {
@@ -22,7 +31,7 @@ $.widget('ui.imgTools', {
 	init: function(){
 		var self = this;
         self.state = {};
-        self.state.initial = {
+        self.state.initial = self.state.actual = {
             width:  $(self.element).width(),
             height: $(self.element).height()
         };
@@ -99,8 +108,6 @@ $.widget('ui.imgTools', {
                 out[pair[0]] = pair[1];
             });
         }
-        // cached execution
-        self.getSearchHash = function() { return out; };
         return out;
     },
 
@@ -200,15 +207,16 @@ $.ui.imgTools.regional[''] = {
 $.ui.plugin.add('imgTools', 'scale', {
     activate: function(e, ui) {
         var self    = $(ui.element).data('imgTools');
-        var actions = self.actions.get('scale');
         var img     = self.getSearchHash();
+        var scale = {
+            scale: self.state.actual.scale || 100,
+            w: self.state.actual.width,
+            h: self.state.actual.height
+        };
+        self.state.actual.scale = self.state.initial.scale = img && img.scale || 100;
+
         setTimeout(function(){
-            if (actions.length > 0) {
-                $(self.interface.scale.slider).slider('moveTo', actions.shift().val, 0, true);
-            }
-            else {
-                $(self.interface.scale.slider).slider('moveTo', 100, 0, true);
-            }
+            $(self.interface.scale.slider).slider('moveTo', self.state.actual.scale, 0, true);
         }, 300);
     },
     deactivate: function(e, ui, noresize) {
@@ -216,9 +224,13 @@ $.ui.plugin.add('imgTools', 'scale', {
         $(self.interface.scale.wrapper).hide();
         $(self.interface.tools).fadeOut();
         $(self.interface.menu).fadeIn();
+        self.state.actual.width  = parseInt(self.state.initial.width, 10);
+        self.state.actual.height = parseInt(self.state.initial.height, 10);
         if (!noresize) {
             $(self.element).animate({
-                width: parseInt(self.state.initial.width, 10)});
+                width:  self.state.actual.width,
+                height: self.state.actual.height
+            });
         }
     },
     save: function (e, ui){
@@ -243,7 +255,7 @@ $.ui.plugin.add('imgTools', 'scale', {
         self.addButton('scale', 'save', 'Ok', 'save');
         self.addButton('scale', 'cancel', 'Cancel', 'deactivate');
         $(self.interface.scale.slider).bind('slide', function(e, ui){ 
-            $(self.element).width(parseInt(self.state.initial.width * ui.value / 100, 10));
+            $(self.element).css({width:parseInt(self.state.actual.width * ui.value / 100, 10), height:'auto'});
         });
     }
 });
@@ -261,12 +273,21 @@ $.ui.plugin.add('imgTools', 'crop', {
     },
     activate: function(e, ui) {
         var self = $(ui.element).data('imgTools');
+        var img  = self.getSearchHash();
+        var crop = {
+            x: img && img.x || 0,
+            y: img && img.y || 0,
+            w: img && img.w || $(self.element).width(),
+            h: img && img.h || $(self.element).height()
+        };
         $(self.interface.wrapper).addClass('ui-imgTools-active');
         $(self.interface.menu).fadeOut();
         $(self.interface.tools).fadeIn(); 
-        self.options.plugins.crop.initials = [{x:135, y:39, w:100, h:200}];
-        $(self.element).imgSelection(self.options.plugins.crop);
-        var w  = self.state.initial.width;
+        self.options.plugins.crop.initials = [crop];
+
+        setTimeout(function(){
+            $(self.element).css({width:self.state.initial.width, height:self.state.initial.height}).imgSelection(self.options.plugins.crop);
+        }, 1000);
     },
     deactivate: function(e, ui){
         var self = $(ui.element).data('imgTools');
@@ -275,12 +296,18 @@ $.ui.plugin.add('imgTools', 'crop', {
         $(self.interface.menu).fadeIn();
         $(self.interface.crop.wrapper).hide();
         $(self.element).imgSelection('destroy');
+        $(self.element).css({width:self.state.actual.width, height:self.state.actual.height});
         self.refresh(false);
     },
     save: function (e, ui){
-        var self   = $(ui.element).data('imgTools');
-        var s      = $(self.element).imgSelection('getSelections')[0];
-        self.actions.set({label: 'Crop', plugin: 'crop', val: [-s.x, -s.y, s.w, s.h].join(',')}, true);
+        var self = $(ui.element).data('imgTools');
+        var s    = $(self.element).imgSelection('getSelections')[0];
+        var v    = [-s.x, -s.y, s.w, s.h].join(',');
+        self.state.actual.x = s.x;
+        self.state.actual.y = s.y;
+        self.state.actual.width  = s.w;
+        self.state.actual.height = s.h;
+        self.actions.set({label: 'Crop', plugin: 'crop', val: v}, true);
         self.callPlugin('crop', 'deactivate', [e, ui, true]);
     }
 });
