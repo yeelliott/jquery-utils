@@ -21,7 +21,11 @@ $.widget('ui.imgTools', {
     plugins: {},
 	init: function(){
 		var self = this;
-
+        self.state = {};
+        self.state.initial = {
+            width:  $(self.element).width(),
+            height: $(self.element).height()
+        };
         self.actions = {
             history: [],
             set: function(action, unique){
@@ -45,13 +49,6 @@ $.widget('ui.imgTools', {
             },
             add: function(action) {
                 self.actions.history.push(action);
-            }
-        };
-
-        self.state = {
-            initial: {
-                width:  $(self.element).width(),
-                height: $(self.element).height()
             }
         };
 
@@ -79,6 +76,14 @@ $.widget('ui.imgTools', {
         };
     },
 
+    refresh: function(original) {
+        var self = this;
+        var get  = self.getSearchString();
+        var img  = self.getSearchHash().img;
+        var src  = original && '?img='+img || (get && '?'+get+'&img=' || '?img=') + img;
+        $(self.element).attr('src', self.options.url + src);
+    },
+
     propagate: function(n, e, inst) {
         $.ui.plugin.call(this, n, [e || {}, this.ui(inst)]);
     },
@@ -94,6 +99,8 @@ $.widget('ui.imgTools', {
                 out[pair[0]] = pair[1];
             });
         }
+        // cached execution
+        self.getSearchHash = function() { return out; };
         return out;
     },
 
@@ -222,9 +229,7 @@ $.ui.plugin.add('imgTools', 'scale', {
         self.callPlugin('scale', 'deactivate', [e, ui, true]);
     },
     init: function(e, ui){
-        console.log(ui.element);
         var self = $(ui.element).data('imgTools');
-        console.log(self);
         self.interface.scale = {
             wrapper: $('<div class="ui-imgTools-scale ui-imgTools-plugin" />').hide('fast'),
             slider: $('<div class="ui-slider"><div class="ui-slider-handle" /></div>').slider()
@@ -259,24 +264,24 @@ $.ui.plugin.add('imgTools', 'crop', {
         $(self.interface.wrapper).addClass('ui-imgTools-active');
         $(self.interface.menu).fadeOut();
         $(self.interface.tools).fadeIn(); 
+        self.options.plugins.crop.initials = [{x:135, y:39, w:100, h:200}];
         $(self.element).imgSelection(self.options.plugins.crop);
+        var w  = self.state.initial.width;
     },
     deactivate: function(e, ui){
         var self = $(ui.element).data('imgTools');
-        var w  = parseInt(self.state.initial.width, 10);
         $(self.interface.wrapper).removeClass('ui-imgTools-active');
         $(self.interface.tools).fadeOut();
         $(self.interface.menu).fadeIn();
         $(self.interface.crop.wrapper).hide();
         $(self.element).imgSelection('destroy');
+        self.refresh(false);
     },
     save: function (e, ui){
         var self   = $(ui.element).data('imgTools');
         var s      = $(self.element).imgSelection('getSelections')[0];
-        self.actions.set({label: 'Crop', plugin: 'crop', val: [s.x, s.y, s.w, s.h].join(',')}, true);
-        var getStr = self.getSearchString();
-        $(self.element).attr('src', self.options.url + ((getStr && '?'+getStr+'&img=' || '?img=') + self.getSearchHash().img));
-        self.callPlugin('scale', 'deactivate', [e, ui, true]);
+        self.actions.set({label: 'Crop', plugin: 'crop', val: [-s.x, -s.y, s.w, s.h].join(',')}, true);
+        self.callPlugin('crop', 'deactivate', [e, ui, true]);
     }
 });
 
