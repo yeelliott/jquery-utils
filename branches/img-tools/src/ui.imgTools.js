@@ -4,6 +4,12 @@
  * http://haineault.com 
  * 
  * MIT License (http://www.opensource.org/licenses/mit-license.php)
+ * 
+ * Ideas:
+ *  - plugin: simplified css styles
+ *  - plugin: edit alt text
+ *  - plugin: text overlay
+ *  - theme: fixed top bar
  *
  * TODO:
  * - when a plugin is active UI should stay at opacity 1.0
@@ -15,15 +21,7 @@
  * - crop: image opacity isn't reseted after plugin destroy
  * - crop: overlay doesn't play well with resize
  * - resize: when re-resizing if cancel is pressed the wrong "original" width is restored
- *
- * + scale
- * + scale.save
- * + scale.save -> crop
- * ~ scale.save -> crop -> crop.save (wrong offset)
- * + crop
- * + crop.save
- * + crop.save -> scale
- * + crop.save -> scale -> scale save
+ * - crop: scale.save -> crop -> crop.save = wrong offset
  * */
 
 $.widget('ui.imgTools', {
@@ -66,12 +64,13 @@ $.widget('ui.imgTools', {
             menu:    $('<ul class="ui-imgTools-menu" />'),
             status:  $('<div class="ui-imgTools-status" />').text('status'),
             size:    $('<div class="ui-imgTools-size" />').text(''),
-            tools:   $('<div class="ui-imgTools-tools" />').hide()
+//            tools:   $('<div class="ui-imgTools-tools" />').hide(),
+            bar:     $('<div class="ui-imgTools-bar ui-buttonpane" />')
         };
-        $(self.element).add(self.interface.tools).add(self.interface.tools).wrap(self.interface.wrapper)
+        $(self.element).wrap(self.interface.wrapper)
             .hover(function(){ $(this).parent().addClass('hover'); }, function(){ $(this).parent().removeClass('hover'); });
-        $(self.interface.menu).insertBefore(self.element);
-        $(self.interface.tools).insertAfter(self.interface.menu);
+        
+        $('body').prepend($(self.interface.bar).append(self.interface.menu));
         self.open();
         $(self.element).data('imgTools', this);
         self.propagate('init', {}, self);
@@ -136,40 +135,68 @@ $.widget('ui.imgTools', {
         }
     },
 
-    addButton: function(plugin, button, label, method) {
+    addPlugin: function(ns, options){
         var self = this;
-        if (self.interface[plugin]) {
-            self.interface[plugin][button] = $('<input type="button" />').val(label)
+        var opt = $.extend(options, {
+            hide:  true,
+            menu:  true,
+            label: options.menuLabel || ns
+        });
+        self.interface[ns] = {
+            wrapper: $('<div class="ui-imgTools-%ns ui-imgTools-plugin" />'.replace('%ns', ns))
+        };
+        self.addMenuItem(ns, 'Scale', 'activate');
+        if (opt.buttonPane) {
+            self.interface[ns].buttonPane = $('<div class="ui-imgTools-buttonPane" />').append(self.interface[ns].wrapper);
+        }
+        if (opt.hide) {
+            $(self.interface[ns].wrapper).hide();
+        }
+        $(self.interface.bar).append(self.interface[ns].wrapper);
+    },
+
+    addWidget: function(wdg) {
+        var self = this;
+        self.interface[wdg.ns][wdg.name] = wdg.element;
+        if (self.interface[wdg.ns].wrapper) {
+            $(self.interface[wdg.ns].wrapper).append(self.interface[wdg.ns][wdg.name]);
+        }
+        return self.interface[wdg.ns][wdg.name];
+    },
+
+    addButton: function(btn) {
+        var self = this;
+        if (self.interface[btn.ns]) {
+            self.interface[btn.ns][btn.name] = $('<button />').text(btn.label)
                 .bind('click', function(e){
-                    if (self.plugins[method]) {
-                        var rs = jQuery.grep(self.plugins[method], function(n){
-                            return (n[0] && n[0] == plugin);
-                        }).shift();
-                        if (rs && rs[1]) {
-                            rs[1].apply(this, [e, self])
-                        }
+                    if (!self.plugins[btn.callback]) { return false; }
+                    var rs = jQuery.grep(self.plugins[btn.callback], function(n){
+                        return (n[0] && n[0] == btn.ns);
+                    }).shift();
+                    if (rs && rs[1]) {
+                        rs[1].apply(this, [e, self])
                     }
-                }).appendTo(self.interface[plugin].wrapper);
+                }).appendTo(self.interface[btn.ns].wrapper);
         }
     },
 
-    addMenuItem: function(plugin, label, method) {
+    addMenuItem: function(item) {
         var self = this;
-        $(this.interface.menu).append($('<li><a href="#%k">%l</a></li>'.replace('%k',plugin).replace('%l',label))
+        $(this.interface.menu).append($('<li><a href="#%k">%l</a></li>'.replace('%k', item.ns).replace('%l', item.label))
             .click(function(e){
-                if (self.plugins[method]) {
-                    var rs = jQuery.grep(self.plugins[method], function(n){
-                        return (n[0] && n[0] == plugin);
+                if (self.plugins[item.callback]) {
+                    var rs = jQuery.grep(self.plugins[item.callback], function(n){
+                        return (n[0] && n[0] == item.ns);
                     }).shift();
                     if (rs && rs[1]) {
                         rs[1].apply(this, [e, self])
                     }
                 }
-                if (self.interface[plugin] && self.interface[plugin].wrapper) {
-                    $(self.interface[plugin].wrapper).show('fast');
+                if (self.interface[btn.ns] && self.interface[btn.ns].wrapper) {
+                    $(self.interface[btn.ns].wrapper).show('fast');
                     $(self.interface.wrapper).addClass('ui-imgTools-active');
                     $(self.interface.menu).fadeOut('fast');
-                    $(self.interface.tools).fadeIn('slow'); 
+                    $(self.interface.bar).fadeIn('slow'); 
                 }
             }));
     },
@@ -222,7 +249,7 @@ $.ui.plugin.add('imgTools', 'scale', {
     deactivate: function(e, ui, noresize) {
         var self = $(ui.element).data('imgTools');
         $(self.interface.scale.wrapper).hide();
-        $(self.interface.tools).fadeOut();
+        $(self.interface.bar).fadeOut();
         $(self.interface.menu).fadeIn();
         self.state.actual.width  = parseInt(self.state.initial.width, 10);
         self.state.actual.height = parseInt(self.state.initial.height, 10);
@@ -236,27 +263,27 @@ $.ui.plugin.add('imgTools', 'scale', {
     save: function (e, ui){
         var self = $(ui.element).data('imgTools');
         var getStr = self.getSearchString();
-        self.actions.set({label: 'Scale', plugin: 'scale', val: $(self.interface.scale.slider).slider('value')}, true);
+
+        self.actions.set({
+            label: 'Scale', 
+            plugin: 'scale', 
+            val: $(self.interface.scale.slider).slider('value')}, true);
+
         $(self.element).attr('src', self.options.url + ((getStr && '?'+getStr+'&img=' || '?img=') + self.getSearchHash().img));
         self.callPlugin('scale', 'deactivate', [e, ui, true]);
     },
     init: function(e, ui){
         var self = $(ui.element).data('imgTools');
-        self.interface.scale = {
-            wrapper: $('<div class="ui-imgTools-scale ui-imgTools-plugin" />').hide('fast'),
-            slider: $('<div class="ui-slider"><div class="ui-slider-handle" /></div>').slider()
-        };
+        self.addPlugin('scale', {menuLabel: 'Scale'});
+        self.addWidget('scale', 'slider', $('<div class="ui-slider"><div class="ui-slider-handle" /></div>').slider()
+                .bind('slide', function(e, ui){ 
+                    $(self.element).css({
+                        width:parseInt(self.state.actual.width * ui.value / 100, 10), 
+                        height:'auto'}); }));
 
-        $(self.interface.scale.wrapper)
-            .append(self.interface.scale.slider)
-            
-        $(self.interface.tools).append(self.interface.scale.wrapper);
-        self.addMenuItem('scale', 'Scale', 'activate');
         self.addButton('scale', 'save', 'Ok', 'save');
         self.addButton('scale', 'cancel', 'Cancel', 'deactivate');
-        $(self.interface.scale.slider).bind('slide', function(e, ui){ 
-            $(self.element).css({width:parseInt(self.state.actual.width * ui.value / 100, 10), height:'auto'});
-        });
+
     }
 });
 
@@ -266,10 +293,11 @@ $.ui.plugin.add('imgTools', 'crop', {
         self.interface.crop = {
             wrapper: $('<div class="ui-imgTools-crop ui-imgTools-plugin" />').hide('fast')
         };
-        $(self.interface.tools).append(self.interface.crop.wrapper);
-        self.addMenuItem('crop', 'Crop',   'activate');
-        self.addButton('crop',   'save',   'Save',   'save');
-        self.addButton('crop',   'cancel', 'Cancel', 'deactivate');
+        $(self.interface.bar).append(self.interface.crop.wrapper);
+
+        self.addPlugin({ns: 'crop', label: 'Crop'});
+        self.addButton({ns: 'crop', name: 'save',   label: 'Save',   callback: 'save'});
+        self.addButton({ns: 'crop', name: 'cancel', label: 'Cancel', callback: 'deactivate'});
     },
     activate: function(e, ui) {
         var self = $(ui.element).data('imgTools');
@@ -277,12 +305,12 @@ $.ui.plugin.add('imgTools', 'crop', {
         var crop = {
             x: img && img.x || 0,
             y: img && img.y || 0,
-            w: img && img.w || $(self.element).width(),
-            h: img && img.h || $(self.element).height()
+            w: img && img.w || self.state.actual.width,
+            h: img && img.h || self.state.actual.height
         };
         $(self.interface.wrapper).addClass('ui-imgTools-active');
         $(self.interface.menu).fadeOut();
-        $(self.interface.tools).fadeIn(); 
+        $(self.interface.bar).fadeIn(); 
         self.options.plugins.crop.initials = [crop];
 
         setTimeout(function(){
@@ -292,7 +320,7 @@ $.ui.plugin.add('imgTools', 'crop', {
     deactivate: function(e, ui){
         var self = $(ui.element).data('imgTools');
         $(self.interface.wrapper).removeClass('ui-imgTools-active');
-        $(self.interface.tools).fadeOut();
+        $(self.interface.bar).fadeOut();
         $(self.interface.menu).fadeIn();
         $(self.interface.crop.wrapper).hide();
         $(self.element).imgSelection('destroy');
@@ -302,6 +330,8 @@ $.ui.plugin.add('imgTools', 'crop', {
     save: function (e, ui){
         var self = $(ui.element).data('imgTools');
         var s    = $(self.element).imgSelection('getSelections')[0];
+//        var x    = s.x
+        console.log(self.state.actual.width, s.w);
         var v    = [-s.x, -s.y, s.w, s.h].join(',');
         self.state.actual.x = s.x;
         self.state.actual.y = s.y;
