@@ -64,16 +64,14 @@ $.widget('ui.imgTools', {
             menu:    $('<ul class="ui-imgTools-menu" />'),
             status:  $('<div class="ui-imgTools-status" />').text('status'),
             size:    $('<div class="ui-imgTools-size" />').text(''),
-//            tools:   $('<div class="ui-imgTools-tools" />').hide(),
             bar:     $('<div class="ui-imgTools-bar ui-imgTools-buttonpane" style="display:none;" />')
         };
         $(self.element).wrap(self.interface.wrapper)
             .hover(function(){ $(this).parent().addClass('hover'); }, function(){ $(this).parent().removeClass('hover'); });
 
-        $('<a class="ui-imgTools-close" />')
-            .click(function(){
-                self.close();
-            }).appendTo(self.interface.bar);
+        $('<a class="ui-imgTools-close" />').click(function(){
+            self.close();
+        }).appendTo(self.interface.bar);
         
         $('body').prepend($(self.interface.bar).append(self.interface.menu));
         $(self.element).data('imgTools', this);
@@ -184,7 +182,6 @@ $.widget('ui.imgTools', {
     addButton: function(ns, btn) {
         var self = this;
         if (self.interface[ns]) {
-            console.log(btn.label);
             self.interface[ns][btn.name] = $('<button />').addClass('ui-imgTools-button-'+btn.name).html($('<span />').text(btn.label))
                 .bind('click', function(e){
                     if (!self.plugins[btn.callback]) { return false; }
@@ -198,12 +195,17 @@ $.widget('ui.imgTools', {
         }
     },
 
+    addSeparator: function(plugin) {
+        $('<span class="ui-imgTools-separator">').text('sep')
+            .appendTo(plugin && this.interface[ns].wrapper || this.interface.menu);
+    },
+
     addMenuItem: function(ns, item) {
         var self = this;
         $(this.interface.menu).append($('<button />').addClass('ui-imgTools-button-'+ns).html($('<span />').text(item.label))
             .click(function(e){
                 if (self.plugins[item.callback]) {
-                    var rs = jQuery.grep(self.plugins[item.callback], function(n){
+                    var rs = $.grep(self.plugins[item.callback], function(n){
                         return (n[0] && n[0] == ns);
                     }).shift();
                     if (rs && rs[1]) {
@@ -225,13 +227,11 @@ $.extend($.ui.imgTools, {
     regional: [],
     defaults: {
         url:       'data/ImgTools.php',
-        mode:      'dialog',
-        minWidth:  false,
-        minHeight: false,
         history:   true,
         scale:     true,
         crop:      true,
         plugins: {
+            scale: {},
             crop: {
                 areaInfo: true
             }
@@ -239,17 +239,26 @@ $.extend($.ui.imgTools, {
     }
 });
 
-$.ui.imgTools.regional[''] = {
-    crop:   'crop',
-    scale:  'scale',
-    save:   'apply',
-    cancel: 'cancel'
-};
-
 /*
  * imgSelection plugins
  */
 $.ui.plugin.add('imgTools', 'scale', {
+    init: function(e, ui){
+        var self = $(ui.element).data('imgTools');
+        self.addPlugin('scale', {label: 'Scale'});
+        self.addButton('scale', {name: 'save',   label: 'Ok',     callback: 'save'});
+        self.addButton('scale', {name: 'cancel', label: 'Cancel', callback: 'deactivate'});
+        self.addWidget('scale', {name:  'slider', 
+            element: $('<div class="ui-slider"><div class="ui-slider-handle" /></div>')
+                .slider()
+                .bind('slide', function(e, ui){ 
+                    $(self.element).css({
+                        width:parseInt(self.state.actual.width * ui.value / 100, 10), 
+                        height:'auto'
+                    });
+                })});
+
+    },
     activate: function(e, ui) {
         var self    = $(ui.element).data('imgTools');
         var img     = self.getSearchHash();
@@ -288,22 +297,6 @@ $.ui.plugin.add('imgTools', 'scale', {
 
         $(self.element).attr('src', self.options.url + ((getStr && '?'+getStr+'&img=' || '?img=') + self.getSearchHash().img));
         self.callPlugin('scale', 'deactivate', [e, ui, true]);
-    },
-    init: function(e, ui){
-        var self = $(ui.element).data('imgTools');
-        self.addPlugin('scale', {label: 'Scale'});
-        self.addButton('scale', {name: 'save',   label: 'Ok',     callback: 'save'});
-        self.addButton('scale', {name: 'cancel', label: 'Cancel', callback: 'deactivate'});
-        self.addWidget('scale', {name:  'slider', 
-            element: $('<div class="ui-slider"><div class="ui-slider-handle" /></div>')
-                        .slider()
-                        .bind('slide', function(e, ui){ 
-                            $(self.element).css({
-                                width:parseInt(self.state.actual.width * ui.value / 100, 10), 
-                                height:'auto'
-                            });
-                        })});
-
     }
 });
 
@@ -350,7 +343,6 @@ $.ui.plugin.add('imgTools', 'crop', {
         var self = $(ui.element).data('imgTools');
         var s    = $(self.element).imgSelection('getSelections')[0];
 //        var x    = s.x
-        console.log(self.state.actual.width, s.w);
         var v    = [-s.x, -s.y, s.w, s.h].join(',');
         self.state.actual.x = s.x;
         self.state.actual.y = s.y;
@@ -380,6 +372,13 @@ $.ui.plugin.add('imgTools', 'history', {
     }
 });
 
+$.ui.imgTools.regional[''] = {
+    crop:   'crop',
+    scale:  'scale',
+    save:   'apply',
+    cancel: 'cancel'
+};
+
 /* English (UTF-8) initialisation for the jQuery UI imgTools plugin. */
 /* Written by Maxime Haineault (haineault@gmail.com). */
 jQuery(function($){
@@ -391,3 +390,4 @@ jQuery(function($){
     };
 	//$.ui.imgTools.setDefaults($.ui.imgTools.regional['fr']);
 });
+

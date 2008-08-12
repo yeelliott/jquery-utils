@@ -575,8 +575,11 @@ Generic ThemeRoller Classes
 	background: #e6e6e6 url(images/e6e6e6_40x100_textures_02_glass.png) 0 50% repeat-x;
 	border: 1px solid #d3d3d3;
 	height: 2em;
-	position: relative;
+	position: fixed;
     padding:0.5em;
+    top:0;
+    left:0;
+    right:0;
 }
 
 /* menu */
@@ -627,6 +630,10 @@ Generic ThemeRoller Classes
     display:block;
     padding:0 0 0 20px;
 }
+.ui-imgTools-buttonpane .separator {
+    background:#666;
+}
+
 .ui-imgTools-buttonpane {
     text-align:left;
 }
