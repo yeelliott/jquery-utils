@@ -10,7 +10,7 @@ class ImgTools {
     private $srcimg  = false;
     private $dstimg  = false;
     private $cached  = true;
-    private $methods = array('scale', 'crop');
+    private $methods = array('scale', 'crop', 'text');     // order matters
     private $allowed = array('jpg', 'jpeg', 'png', 'gif'); // allowed image types
 
     public function __construct($cached=true) {
@@ -54,12 +54,7 @@ class ImgTools {
             case 'png':  header('Content-type: image/png'); break;
         }
 
-        if ($this->cached) {
-            die(readfile($this->cache())); // TODO: try redirect instead
-        }
-        else {
-            die(readfile($this->src)); // TODO: try redirect instead
-        }
+        die(readfile($this->cache())); // TODO: try redirect instead
     }
 
     private function imgCreate() {
@@ -84,7 +79,6 @@ class ImgTools {
         foreach ($this->methods as $method) {
             if ($_REQUEST[$method] && method_exists($this, $method)) {
                 call_user_method($method, $this, $_REQUEST[$method]);
-                $this->srcimg = $this->dstimg; // apply incrementally
                 $applied++;
             }
         }
@@ -108,10 +102,10 @@ class ImgTools {
     }
 
     private function cache() {
-        if (file_exists($this->dst)) {
-            return $this->dst;
-        }
-        else { // create cache
+//      if (file_exists($this->dst)) {
+//          return $this->dst;
+//      }
+//      else { // create cache
             $this->imgCreate();
             if ($this->imgApplyMethods() == 0) { // unchanged
                 return $this->src;
@@ -120,7 +114,7 @@ class ImgTools {
                 $this->save();
                 return $this->dst;
             }
-        }
+//      }
     }
 
 
@@ -130,19 +124,27 @@ class ImgTools {
         $nh = (int)$percent / 100 * $h;
 
         $this->dstimg = imagecreatetruecolor($nw, $nh);
-        imagecopyresized($this->dstimg, $this->srcimg, 0, 0, 0, 0, $nw, $nh, $w, $h);
+        imagecopyresampled($this->dstimg, $this->srcimg, 0, 0, 0, 0, $nw, $nh, $w, $h);
+        $this->srcimg = $this->dstimg; // apply incrementally
     }
 
-    private function crop($options) { // t,l,w,h
+    // options: t,l,w,h
+    private function crop($options) { 
         list($w, $h) = getimagesize($this->src);
         list($nx, $ny, $nw, $nh) = split(',', $options);
 
         $this->dstimg = imagecreatetruecolor($nw, $nh);
         imagecopy($this->dstimg, $this->srcimg, $nx, $ny, 0, 0, $w, $h);
+        $this->srcimg = $this->dstimg; // apply incrementally
     }
 
-    private function watermark($options) {
-        imagestring($this->srcimg, 2, 5, 5,  "A Simple Text String", imagecolorallocate($this->srcimg, 233, 14, 91));
+    // options: font,x,y,r,g,b,Text
+    private function text($options) {
+        list($w, $h) = getimagesize($this->src);
+        list($font, $x, $y, $r, $g, $b, $text) = split(',', $options);
+        $this->dstimg = imagecreatetruecolor($w, $h);
+        imagecopy($this->dstimg, $this->srcimg, 0, 0, 0, 0, $w, $h);
+        imagestring($this->dstimg, $font, $x, $y,  $text, imagecolorallocate($this->dstimg, $r, $g, $b));
     }
 
 }
