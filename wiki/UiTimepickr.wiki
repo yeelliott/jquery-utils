@@ -1,0 +1,49 @@
+#labels Featured
+= jQuery-utils.ui: timepickr = 
+
+== Introduction ==
+
+jquery.timepickr was created in a attempt to make the process of inputing time in a form as easy an natural as posssible. 
+
+== Usage examples ==
+
+=== Basic usage ===
+
+{{{
+
+$(function(){
+    $('#test').timepickr();
+});
+
+}}}
+
+=== Options ===
+
+|| *Option* || *Default || *Description ||
+|| convention || 24 || Hour convention (12 or 24) ||
+|| dropslide || {trigger:  'focus'} || Dropslide options ||
+|| format12 || "{h:02.d}:{m:02.d} {suffix:s}" || 12h format string ||
+|| format24 || "{h:02.d}:{m:02.d}" || 24h format string ||
+|| handle || false || handle is a DOM element which will open the menu upon click ||
+|| hours || true || Show hours picker ||
+|| minutes || true || Show minutes picker ||
+|| seconds || false || Show seconds picker ||
+|| prefix || ['am', 'pm'] || Time prefix ||
+|| suffix || ['am', 'pm'] || Time suffix ||
+|| rangeMin || ['00', '15', '30', '45'] || Minutes range ||
+|| rangeSec || ['00', '15', '30', '45'] || Seconds range ||
+|| updateLive || true || Update input value on each mouseover ||
+|| val || false || Initial value ||
+
+
+=== TODO ===
+
+ * add possibility to add labels
+ * optional keyboard navigation
+ * themes support
+ * "reset" on blur
+
+=== References ===
+
+ * [http://en.wikipedia.org/wiki/12-hour_clock 12-hour clock]
+ * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]
