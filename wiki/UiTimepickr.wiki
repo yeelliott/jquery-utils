@@ -1,6 +1,8 @@
 #labels Featured
 = jQuery-utils.ui: timepickr = 
 
+http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
+
 == Introduction ==
 
 jquery.timepickr was created in a attempt to make the process of inputing time in a form as easy an natural as posssible. 
