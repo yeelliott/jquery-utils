@@ -9,6 +9,16 @@ jquery.timepickr was created in a attempt to make the process of inputing time i
 
 === Basic usage ===
 
+==== HTML ====
+
+{{{
+
+<input id="test" type="text" value="">
+
+}}}
+
+==== JavaScript ====
+
 {{{
 
 $(function(){
