@@ -1,5 +1,4 @@
 #labels Featured
-
 http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
 
 == Introduction ==
@@ -45,6 +44,7 @@ $(function(){
 || rangeSec || ['00', '15', '30', '45'] || Seconds range ||
 || updateLive || true || Update input value on each mouseover ||
 || val || false || Initial value ||
+|| resetOnBlur || true || Input reset itself on blur when no click happens ||
 
 
 === TODO ===
