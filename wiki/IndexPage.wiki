@@ -6,24 +6,33 @@ Don't hesitate to submit comments, bugs or patches.
 == Utilities ==
 
 || * Utility* || *Description* || *Author* ||
-|| AnchorHandler  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). || [http://haineault.com Maxime Haineault] ||
-|| [http://stilbuero.de/jquery/cookie/ cookie] || Cookie manipulation || [ Klaus Hart http://stilbuero.de/l] ||
+|| [http://code.google.com/p/jquery-utils/wiki/AnchorHandler jquery.anchorHandler.js]  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). || [http://haineault.com Maxime Haineault] ||
+|| [http://stilbuero.de/jquery/cookie/ jquery.cookie.js] || Cookie manipulation || [Klaus Hart http://stilbuero.de/l] ||
 || countDown || A simple countdown script || [http://haineault.com Maxime Haineault] ||
-|| [http://malsup.com/jquery/cycle/  cyCle] || A cycle script, useful for banner rotation ||[http://malsup.com/ M. Alsup] ||
+|| [http://malsup.com/jquery/cycle/  jquery.cycle.js] || A cycle script, useful for banner rotation ||[http://malsup.com/ M. Alsup] ||
 || DelayedObserver || A delayed observer, useful when grabbing keyboard input ||[http://haineault.com Maxime Haineault] ||
-|| [http://jquery.lukelutman.com/plugins/flash flAsh] || A plugin for embedding Flash movies || [http://lukelutman.com/ Luke Lutman] ||
-|| [http://jquery.khurshid.com/ifixpng.php iFixpng] || A plugin designed to fix that problem by applying appropriate filters to user specified elements, while keeping all element tags intact. || [http://khurshid.com Kush M.] ||
-|| [http://plugins.jquery.com/project/mousewheel  mousewheel] || Adds mouse wheel support for your application ||[http://brandonaaron.net/ brandon] ||
+|| [http://jquery.lukelutman.com/plugins/flash jquery.flash.js] || A plugin for embedding Flash movies || [http://lukelutman.com/ Luke Lutman] ||
+|| [http://jquery.khurshid.com/ifixpng.php jquery.ifixpng.js] || A plugin designed to fix that problem by applying appropriate filters to user specified elements, while keeping all element tags intact. || [http://khurshid.com Kush M.] ||
+|| [http://plugins.jquery.com/project/mousewheel  jquery.mousewheel.js] || Adds mouse wheel support for your application ||[http://brandonaaron.net/ brandon] ||
 || StringsFormatting || Various string formatting method (by now it only has a format method inspired by the Advanced String Formatting module in Python3K, sprintf is expceted next) || [http://haineault.com Maxime Haineault] ||
-|| [http://timeago.yarp.com/  timeago] || A plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") ||[http://mcgeary.org/ Ryan McGeary] ||
-|| uTils || Various utility that I don't know where to put || [http://haineault.com Maxime Haineault] ||
-|| youtubeLinksToEmbed || A plugin which filter Youtube links and load the player inline instead of following the link  || [http://haineault.com Maxime Haineault] ||
+|| [http://timeago.yarp.com/  jquery.timeago.js] || A plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") ||[http://mcgeary.org/ Ryan McGeary] ||
+|| jquery.uTils.js || Various utility that I don't know where to put || [http://haineault.com Maxime Haineault] ||
+|| jquery.youtubeLinksToEmbed.js || A plugin which filter Youtube links and load the player inline instead of following the link  || [http://haineault.com Maxime Haineault] ||
 
 == Ui ==
 
-|| [http://digitalbush.com/projects/masked-input-plugin masked] || Input restriction libary || [http://digitalbush.com/ Josh Bush] ||
-|| [http://code.google.com/p/jquery-utils/wiki/UiToaster toaster] || IM style popup notification system || [http://haineault.com Maxime Haineault] ||
+|| [http://digitalbush.com/projects/masked-input-plugin ui.masked.js] || Input restriction libary || [http://digitalbush.com/ Josh Bush] ||
+|| [http://code.google.com/p/jquery-utils/wiki/UiToaster ui.toaster.js] || IM style popup notification system || [http://haineault.com Maxime Haineault] ||
 
 == Experimental ==
 
-|| valid || Validation libary || [http://haineault.com Maxime Haineault] ||
+|| jquery.dropslide.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.timepickr.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.extendCSS.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.jpath.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.valid.js || Validation libary || [http://haineault.com Maxime Haineault] ||
+|| jquery.imgSelection.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.imgTools.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.awesomebar.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.keynav.js ||  || [http://haineault.com Maxime Haineault] ||
+|| jquery.youtube.js ||  || [http://haineault.com Maxime Haineault] ||
