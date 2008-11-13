@@ -21,11 +21,13 @@ Don't hesitate to submit comments, bugs or patches.
 
 == Ui ==
 
+|| * Widget* || *Description* || *Author* ||
 || [http://digitalbush.com/projects/masked-input-plugin ui.masked.js] || Input restriction libary || [http://digitalbush.com/ Josh Bush] ||
 || [http://code.google.com/p/jquery-utils/wiki/UiToaster ui.toaster.js] || IM style popup notification system || [http://haineault.com Maxime Haineault] ||
 
 == Experimental ==
 
+|| * Prototype* || *Description* || *Author* ||
 || jquery.dropslide.js ||  || [http://haineault.com Maxime Haineault] ||
 || jquery.timepickr.js ||  || [http://haineault.com Maxime Haineault] ||
 || jquery.extendCSS.js ||  || [http://haineault.com Maxime Haineault] ||
