@@ -7,7 +7,7 @@ Don't hesitate to submit comments, bugs or patches.
 
 || * Utility* || *Description* || *Author* ||
 || [http://code.google.com/p/jquery-utils/wiki/AnchorHandler jquery.anchorhandler.js]  || Handle URLs anchor gracefully with regular expressions (inspired by Django URLs dispatcher). || [http://haineault.com Maxime Haineault] ||
-|| [http://stilbuero.de/jquery/cookie/ jquery.cookie.js] || Cookie manipulation || [Klaus Hart http://stilbuero.de/l] ||
+|| [http://stilbuero.de/jquery/cookie/ jquery.cookie.js] || Cookie manipulation || [http://stilbuero.de/l Klaus Hart] ||
 || jquery.countdown.js || A simple countdown script || [http://haineault.com Maxime Haineault] ||
 || [http://malsup.com/jquery/cycle/  jquery.cycle.js] || A cycle script, useful for banner rotation ||[http://malsup.com/ M. Alsup] ||
 || [http://code.google.com/p/jquery-utils/wiki/DelayedObserver jquery.delayedobserver.js] || A delayed observer, useful when grabbing keyboard input ||[http://haineault.com Maxime Haineault] ||
