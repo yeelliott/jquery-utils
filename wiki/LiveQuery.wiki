@@ -53,25 +53,6 @@ $('li')
 
 }}}
 
-
-== Three Flavors ==
-
-Live Query comes in three flavors: full (with comments), minified and packed. I recommend using the minified version along with HTTP Compression for production.
-
-
-== Browser Support ==
-
-Live Query is tested in Safari 2 and WebKit Nightlies, Firefox 1.5 and 2, Internet Explorer 6 and 7 and Opera 9.
-
-== Depends On ==
-
-Live Query depends on jQuery 1.1.3 or higher.
-
-== License ==
-
-Live Query is Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses. Copyright © 2007 Brandon Aaron
-
-
 == Methods == 
 
 || *Method || *Arguments || *Return || Chainable || *Description||
@@ -106,18 +87,17 @@ if (jQuery.livequery)
 }}}
 
 
-== Download ==
+== Browser Support ==
 
-The latest release can be downloaded from the [http://jquery.com/plugins/project/livequery Live Query project page].
+Live Query is tested in Safari 2 and WebKit Nightlies, Firefox 1.5 and 2, Internet Explorer 6 and 7 and Opera 9.
 
-Or you can live on the edge and just pull from SVN: http://jqueryjs.googlecode.com/svn/trunk/plugins/livequery/
+== Depends On ==
 
-== Support ==
+Live Query depends on jQuery 1.1.3 or higher.
 
-Support for the Live Query Plugin is available through the [http://jquery.com/discuss/ jQuery Mailing List]. This is a very active list to which many jQuery developers and users subscribe.
+== License ==
 
-You can also report a bug, request a feature, submit a patch or request support from the [http://jquery.com/plugins/project/livequery Live Query project page].
-
+Live Query is Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses. Copyright © 2007 Brandon Aaron
 
 
 === References ===
