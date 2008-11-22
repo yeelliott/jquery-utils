@@ -5,6 +5,8 @@ http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.p
 
 jquery.timepickr was created in a attempt to make the process of inputing time in a form as easy an natural as posssible. 
 
+*New:* More infos available in [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev Development notes]
+
 == Usage examples ==
 
 === Basic usage ===
@@ -80,6 +82,6 @@ $(function(){
  * "reset" on blur
 
 === References ===
-
+ * [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev Development notes]
  * [http://en.wikipedia.org/wiki/12-hour_clock 12-hour clock]
  * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]
