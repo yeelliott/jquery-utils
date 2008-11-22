@@ -1,15 +1,4 @@
-#summary One-sentence summary of this page.
-
-= Introduction =
-
-Add your content here.
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, parahttp://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
+http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
 
 = Development notes =
 
@@ -62,5 +51,4 @@ If you would like to contribute don't hesitate to [http://www.haineault.com/abou
 == References ==
 
  * [http://en.wikipedia.org/wiki/12-hour_clock 12-hour clock]
- * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]graphs, and lists
-  * Automatic links to other wiki pages
+ * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]
