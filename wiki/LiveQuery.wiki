@@ -1,4 +1,4 @@
-http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
+= jquery.livequery.js =
 
 == Introduction ==
 
@@ -75,8 +75,7 @@ Live Query is Dual licensed under the MIT (http://www.opensource.org/licenses/mi
 == Methods == 
 
 || *Method || *Arguments || *Return || Chainable || *Description ||
-|| livequery || String type, Function handler || jQuery || yes || Binds an event handler to all matched elements, even after the page has been loaded the DOM updated. An event is unbound from an element if the element is changed and is no longer matched. || {{{
-    $("p") 
+|| livequery || String type, Function handler || jQuery || yes || Binds an event handler to all matched elements, even after the page has been loaded the DOM updated. An event is unbound from an element if the element is changed and is no longer matched. || {{{ $("p") 
         .livequery("click", function(){  
             alert( $(this).text() ); 
         });
