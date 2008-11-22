@@ -21,6 +21,41 @@ A collection of some utilities I often re-use and didn't know where to put.
 || `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
 || `$.range` || start, strop, steps || object || Returns a range object ||
 
+== $.keyCode ==
+
+Taken from [http://code.google.com/p/jquery-ui/source/browse/trunk/ui/ui.core.js ui.core.js]. I really thought this gem should not be scoped.
+
+
+|| *Name || *KeyCode ||
+|| `$.keyCode.BACKSPACE` || 8 ||
+|| `$.keyCode.BACKSPACE` || 8 ||
+|| `$.keyCode.CAPS_LOCK` || 20 ||
+|| `$.keyCode.COMMA` || 188 ||
+|| `$.keyCode.CONTROL` || 17 ||
+|| `$.keyCode.DELETE` || 46 ||
+|| `$.keyCode.DOWN` || 40 ||
+|| `$.keyCode.END` || 35 ||
+|| `$.keyCode.ENTER` || 13 ||
+|| `$.keyCode.ESCAPE` || 27 ||
+|| `$.keyCode.HOME` || 36 ||
+|| `$.keyCode.INSERT` || 45 ||
+|| `$.keyCode.LEFT` || 37 ||
+|| `$.keyCode.NUMPAD_ADD` || 107 ||
+|| `$.keyCode.NUMPAD_DECIMAL` || 110 ||
+|| `$.keyCode.NUMPAD_DIVIDE` || 111 ||
+|| `$.keyCode.NUMPAD_ENTER` || 108 ||
+|| `$.keyCode.NUMPAD_MULTIPLY` || 106 ||
+|| `$.keyCode.NUMPAD_SUBTRACT` || 109 ||
+|| `$.keyCode.PAGE_DOWN` || 34 ||
+|| `$.keyCode.PAGE_UP` || 33 ||
+|| `$.keyCode.PERIOD` || 190 ||
+|| `$.keyCode.RIGHT` || 39 ||
+|| `$.keyCode.SHIFT` || 16 ||
+|| `$.keyCode.SPACE` || 32 ||
+|| `$.keyCode.TAB` || 9 ||
+|| `$.keyCode.UP` || 38 ||
+
+
 == $.fn.methods ==
 
 || *Method || *Argument || *Description ||
@@ -31,6 +66,8 @@ A collection of some utilities I often re-use and didn't know where to put.
 Copyright (c) 2007-2008 [http://haineault.com/ Maxime Haineault] 
 
 $.range: Copyright (c) 2007-2008 [http://blog.outofhanwell.com/2006/03/29/javascript-range-function/ Matthias Miller] 
+
+$.keyCode: Copyright (c) 2008 [http://code.google.com/p/jquery-ui/source/browse/trunk/AUTHORS.txt?r=991 jQuery UI authors] (http://ui.jquery.com/about)
 
 == License ==
 
