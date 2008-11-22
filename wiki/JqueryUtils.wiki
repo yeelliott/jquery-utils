@@ -1,6 +1,4 @@
 #labels Featured
-http://jquery-utils.googlecode.com/svn/trunk/demo/data/logo_jquery-utils.jpg
-
 == Introduction ==
 
 A collection of some utilities I often re-use and didn't know where to put.
