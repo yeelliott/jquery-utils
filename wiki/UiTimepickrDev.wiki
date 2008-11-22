@@ -1,3 +1,4 @@
+#labels Featured
 http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
 
 = Development notes =
@@ -45,7 +46,7 @@ If you would like to contribute don't hesitate to [http://www.haineault.com/abou
 == Dependencies ==
 
 || *Dependency* || Documentation ||
-|| [http://code.google.com/p/jquery-utils/source/browse/trunk/src/jquery.utils.js jquery.utils.js] || n/a  ||
+|| [http://code.google.com/p/jquery-utils/source/browse/trunk/src/jquery.utils.js jquery.utils.js] || http://code.google.com/p/jquery-utils/wiki/JqueryUtils  ||
 || [http://code.google.com/p/jquery-utils/source/browse/trunk/src/jquery.strings.js jquery.strings.js] || http://code.google.com/p/jquery-utils/wiki/StringFormat ||
 || [http://code.google.com/p/jquery-utils/source/browse/trunk/src/ui.dropslide.js jquery.dropslide.js] || n/a ||
 
