@@ -1,4 +1,8 @@
 #labels Featured
+http://jquery-utils.googlecode.com/svn/trunk/demo/data/logo_jquery-utils.jpg
+
+== Introduction ==
+
 jQuery utils is a set of jQuery plugins I made or borrowed that I often reuse in my projects, so I created this project in hope it might serve somebody back. jQuery is such a great free open source project, I feel that giving my work back to the community is the less I could do.
 
 Don't hesitate to submit comments, bugs or patches.
@@ -16,7 +20,7 @@ Don't hesitate to submit comments, bugs or patches.
 || [http://plugins.jquery.com/project/mousewheel  jquery.mousewheel.js] || Adds mouse wheel support for your application ||[http://brandonaaron.net/ Brandon Aaron] ||
 || [http://code.google.com/p/jquery-utils/wiki/StringFormat jquery.stringsformatting.js] || Various string formatting method (by now it only has a format method inspired by the Advanced String Formatting module in Python3K, sprintf is expceted next) || [http://haineault.com Maxime Haineault] ||
 || [http://timeago.yarp.com/  jquery.timeago.js] || A plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago") ||[http://mcgeary.org/ Ryan McGeary] ||
-|| jquery.utils.js || Various utility that I don't know where to put || [http://haineault.com Maxime Haineault] ||
+|| [http://code.google.com/p/jquery-utils/wiki/UiTimepickr jquery.utils.js] || Various utility that I don't know where to put || [http://haineault.com Maxime Haineault] ||
 || jquery.youtubelinkstoembed.js || A plugin which filter Youtube links and load the player inline instead of following the link  || [http://haineault.com Maxime Haineault] ||
 
 == Ui ==
@@ -24,6 +28,9 @@ Don't hesitate to submit comments, bugs or patches.
 || * Widget* || *Description* || *Author* ||
 || [http://digitalbush.com/projects/masked-input-plugin ui.masked.js] || Input restriction libary || [http://digitalbush.com/ Josh Bush] ||
 || [http://code.google.com/p/jquery-utils/wiki/UiToaster ui.toaster.js] || IM style popup notification system || [http://haineault.com Maxime Haineault] ||
+|| [http://code.google.com/p/jquery-utils/wiki/JqueryUtils ui.timepickr.js] || Time picker control || [http://haineault.com Maxime Haineault] ||
+|| [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev dev.timepickr || UI timepickr development notes || [http://haineault.com Maxime Haineault] ||
+
 
 == Experimental ==
 
