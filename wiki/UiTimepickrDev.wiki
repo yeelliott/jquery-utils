@@ -32,6 +32,7 @@ If you would like to contribute don't hesitate to [http://www.haineault.com/abou
 || `activate` || - || $ || Calls `dropslide('activate')` ||
 || `destroy` || - || $ || Calls `dropslide('destrow')` ||
 
+
 === Private ===
 
 || *Method* || *Arguments || Returns || *Description ||
