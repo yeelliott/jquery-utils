@@ -30,13 +30,11 @@ Don't hesitate to submit comments, bugs or patches.
 || [http://code.google.com/p/jquery-utils/wiki/UiToaster ui.toaster.js] || IM style popup notification system || [http://haineault.com Maxime Haineault] ||
 || [http://code.google.com/p/jquery-utils/wiki/JqueryUtils ui.timepickr.js] || Time picker control || [http://haineault.com Maxime Haineault] ||
 || [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev dev.timepickr || UI timepickr development notes || [http://haineault.com Maxime Haineault] ||
-
+|| jquery.dropslide.js || Dropslide menu used by UI timepicker  || [http://haineault.com Maxime Haineault] ||
 
 == Experimental ==
 
 || * Prototype* || *Description* || *Author* ||
-|| jquery.dropslide.js ||  || [http://haineault.com Maxime Haineault] ||
-|| jquery.timepickr.js ||  || [http://haineault.com Maxime Haineault] ||
 || jquery.extendCSS.js ||  || [http://haineault.com Maxime Haineault] ||
 || jquery.jpath.js ||  || [http://haineault.com Maxime Haineault] ||
 || jquery.valid.js || Validation libary || [http://haineault.com Maxime Haineault] ||
