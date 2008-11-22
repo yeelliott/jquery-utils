@@ -74,154 +74,52 @@ Live Query is Dual licensed under the MIT (http://www.opensource.org/licenses/mi
 
 == Methods == 
 
-|| *Method || *Arguments || *Return || Chainable || *Description ||
-|| livequery || String type, Function handler || jQuery || yes || Binds an event handler to all matched elements, even after the page has been loaded the DOM updated. An event is unbound from an element if the element is changed and is no longer matched. || {{{ $("p") 
-        .livequery("click", function(){  
-            alert( $(this).text() ); 
-        });
-}}} ||
-
-livequery(Function matchedFn)
-
-    Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated.
-    Returns:
-    jQuery
-    Arguments:
-
-    matchedFn
-
-        A function or function reference. Gets fired for each matched element. The scope of the function is set to the element (this == matched element).
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p") 
-        .livequery(function(){  
-            $(this).addClass('livequerytest'); 
-        });
-
-livequery(Function matchedFn, Function unmatchedFn)
-
-    Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated. For each element that is no longer matched, the second function (unmatchedFn) is fired.
-    Returns:
-    jQuery
-    Arguments:
-
-    matchedFn
-
-        A function or function reference. Gets fired for each matched element. The scope of the function is set to the element (this == matched element).
-    unmatchedFn
-
-        A function or function reference. Gets fired for each element no longer matched. The scope of the function is set to the element (this == matched element).
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p") 
-        .livequery(function(){  
-            $(this).addClass('livequerytest'); 
-        }, function() { 
-            $(this).removeClass('livequerytest'); 
-        });
-
-expire
-
-    This will stop/expire all live queries associated with the selector. Event based live queries unbind the events it bound when expired. The second function (unmatchedFn) of a function based live query is called for each element it had matched, if provided.
-    Returns:
-    jQuery
-    Chainable:
-    Yes
-    Example:
-
-    $("p").expire();
-
-expire(String type)
-
-    This will stop/expire all live queries associated with the selector and event type. All events that the live query bound will be unbound.
-    Returns:
-    jQuery
-    Arguments:
-
-    type
-        An event type, like click and mouseover.
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p").expire('click');
-
-expire(String type, Function handler)
-
-    This will stop/expire all live queries associated with the selector, event type and handler. All events that the live query bound will be unbound.
-    Returns:
-    jQuery
-    Arguments:
-
-    type
-        An event type, like click and mouseover.
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p") 
-        .expire("click", function(){  
-            alert( $(this).text() ); 
-        });
-
-expire(Function matchedFn)
-
-    This will stop/expire all live queries associated with the selector and matchedFn.
-    Returns:
-    jQuery
-    Arguments:
-
-    matchedFn
-
-        A function or function reference. Gets fired for each matched element.
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p") 
-        .expire(function(){  
-            $(this).addClass('livequerytest'); 
-        });
-
-expire(Function matchedFn, Function unmatchedFn)
-
-    This will stop/expire all live queries associated with the selector, matchedFn and unmatchedFn. The unmatchedFn is called for each element it had matched.
-    Returns:
-    jQuery
-    Arguments:
-
-    matchedFn
-
-        A function or function reference. Gets fired for each matched element.
-    unmatchedFn
-
-        A function or function reference. Gets fired for each element no longer matched.
-
-    Chainable:
-    Yes
-    Example:
-
-    $("p") 
-        .expire(function(){  
-            $(this).addClass('livequerytest'); 
-        }, function() { 
-            $(this).removeClass('livequerytest'); 
-        });
+|| *Method || *Arguments || *Return || Chainable || *Description||
+|| livequery || String type, Function handler || jQuery || yes || Binds an event handler to all matched elements, even after the page has been loaded the DOM updated. An event is unbound from an element if the element is changed and is no longer matched. ||
+|| livequery || Function matchedFn || jQuery || yes || Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated. ||
+|| livequery || Function matchedFn, Function unmatchedFn || jQuery || yes || Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated. For each element that is no longer matched, the second function (unmatchedFn) is fired. ||
+|| expire || - || jQuery || yes || This will stop/expire all live queries associated with the selector. Event based live queries unbind the events it bound when expired. The second function (unmatchedFn) of a function based live query is called for each element it had matched, if provided. ||
+|| expire || String type || jQuery || yes || Will stop/expire all live queries associated with the selector and event type. All events that the live query bound will be unbound. ||
+|| expire || String type, Function handler || jQuery || yes || This will stop/expire all live queries associated with the selector, event type and handler. All events that the live query bound will be unbound. ||
+|| expire || Function matchedFn || jQuery || yes || This will stop/expire all live queries associated with the selector and matchedFn. ||
+|| expire || Function matchedFn, Function unmatchedFn || jQuery || yes || This will stop/expire all live queries associated with the selector, matchedFn and unmatchedFn. The unmatchedFn is called for each element it had matched. ||    
 
 
+== For Plugin Developers ==
+
+If your plugin modifies the DOM without using the built-in DOM Modification methods (append, addClass, etc), you can register your plugin with Live Query like this.
+
+{{{
+
+if (jQuery.livequery) 
+    jQuery.livequery.registerPlugin("pluginMethodName"); 
+
+}}}
+
+You can register several plugin methods at once by just passing them as additional arguments to the registerPlugin method.
+
+{{{
+
+if (jQuery.livequery) 
+    jQuery.livequery.registerPlugin("method1", "method2", "method3"); 
+
+}}}
+
+
+== Download ==
+
+The latest release can be downloaded from the [http://jquery.com/plugins/project/livequery Live Query project page].
+
+Or you can live on the edge and just pull from SVN: http://jqueryjs.googlecode.com/svn/trunk/plugins/livequery/
+
+== Support ==
+
+Support for the Live Query Plugin is available through the [http://jquery.com/discuss/ jQuery Mailing List]. This is a very active list to which many jQuery developers and users subscribe.
+
+You can also report a bug, request a feature, submit a patch or request support from the [http://jquery.com/plugins/project/livequery Live Query project page].
 
 
 
 === References ===
- * [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev Development notes]
- * [http://en.wikipedia.org/wiki/12-hour_clock 12-hour clock]
- * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]
+
+ * [http://brandonaaron.net/docs/livequery/ Official Website]
