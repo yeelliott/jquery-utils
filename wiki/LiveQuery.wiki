@@ -1,0 +1,228 @@
+http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
+
+== Introduction ==
+
+Live Query utilizes the power of jQuery selectors by binding events or firing callbacks for matched elements auto-magically, even after the page has been loaded and the DOM updated.
+
+For example you could use the following code to bind a click event to all A tags, even any A tags you might add via AJAX. 
+
+{{{
+
+$('a') 
+    .livequery('click', function(event) { 
+        alert('clicked'); 
+        return false; 
+    }); 
+
+}}}
+
+Once you add new A tags to your document, Live Query will bind the click event and there is nothing else that needs to be called or done.
+
+When an element no longer matches a selector the events Live Query bound to it are unbound. The Live Query can be expired which will no longer bind anymore events and unbind all the events it previously bound.
+
+Live Query can even be used with the more powerful jQuery selectors. The following Live Query will match and bind a click event to all A tags that have a rel attribute with the word "friend" in it. If one of the A tags is modified by removing the word "friend" from the rel attribute, the click event will be unbound since it is no longer matched by the Live Query. 
+
+{{{
+
+$('a[@rel*=friend]') 
+    .livequery('click', function(event) { 
+        doSomething(); 
+    }); 
+
+}}}
+
+Live Query also has the ability to fire a function (callback) when it matches a new element and another function (callback) for when an element is no longer matched. This provides ultimate flexibility and untold use-cases. For example the following code uses a function based Live Query to implement the jQuery hover helper method and remove it when the element is no longer matched. 
+
+{{{
+
+$('li') 
+    .livequery(function(){ 
+    // use the helper function hover to bind a mouseover and mouseout event 
+        $(this) 
+            .hover(function() { 
+                $(this).addClass('hover'); 
+            }, function() { 
+                $(this).removeClass('hover'); 
+            }); 
+    }, function() { 
+        // unbind the mouseover and mouseout events 
+        $(this) 
+            .unbind('mouseover') 
+            .unbind('mouseout'); 
+    }); 
+
+}}}
+
+
+== Three Flavors ==
+
+Live Query comes in three flavors: full (with comments), minified and packed. I recommend using the minified version along with HTTP Compression for production.
+
+
+== Browser Support ==
+
+Live Query is tested in Safari 2 and WebKit Nightlies, Firefox 1.5 and 2, Internet Explorer 6 and 7 and Opera 9.
+
+== Depends On ==
+
+Live Query depends on jQuery 1.1.3 or higher.
+
+== License ==
+
+Live Query is Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses. Copyright © 2007 Brandon Aaron
+
+
+== Methods == 
+
+|| *Method || *Arguments || *Return || Chainable || *Description ||
+|| livequery || String type, Function handler || jQuery || yes || Binds an event handler to all matched elements, even after the page has been loaded the DOM updated. An event is unbound from an element if the element is changed and is no longer matched. || {{{
+    $("p") 
+        .livequery("click", function(){  
+            alert( $(this).text() ); 
+        });
+}}} ||
+
+livequery(Function matchedFn)
+
+    Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated.
+    Returns:
+    jQuery
+    Arguments:
+
+    matchedFn
+
+        A function or function reference. Gets fired for each matched element. The scope of the function is set to the element (this == matched element).
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p") 
+        .livequery(function(){  
+            $(this).addClass('livequerytest'); 
+        });
+
+livequery(Function matchedFn, Function unmatchedFn)
+
+    Fires a function (matchedFn) for each matched element, even after the page has been loaded the DOM updated. For each element that is no longer matched, the second function (unmatchedFn) is fired.
+    Returns:
+    jQuery
+    Arguments:
+
+    matchedFn
+
+        A function or function reference. Gets fired for each matched element. The scope of the function is set to the element (this == matched element).
+    unmatchedFn
+
+        A function or function reference. Gets fired for each element no longer matched. The scope of the function is set to the element (this == matched element).
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p") 
+        .livequery(function(){  
+            $(this).addClass('livequerytest'); 
+        }, function() { 
+            $(this).removeClass('livequerytest'); 
+        });
+
+expire
+
+    This will stop/expire all live queries associated with the selector. Event based live queries unbind the events it bound when expired. The second function (unmatchedFn) of a function based live query is called for each element it had matched, if provided.
+    Returns:
+    jQuery
+    Chainable:
+    Yes
+    Example:
+
+    $("p").expire();
+
+expire(String type)
+
+    This will stop/expire all live queries associated with the selector and event type. All events that the live query bound will be unbound.
+    Returns:
+    jQuery
+    Arguments:
+
+    type
+        An event type, like click and mouseover.
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p").expire('click');
+
+expire(String type, Function handler)
+
+    This will stop/expire all live queries associated with the selector, event type and handler. All events that the live query bound will be unbound.
+    Returns:
+    jQuery
+    Arguments:
+
+    type
+        An event type, like click and mouseover.
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p") 
+        .expire("click", function(){  
+            alert( $(this).text() ); 
+        });
+
+expire(Function matchedFn)
+
+    This will stop/expire all live queries associated with the selector and matchedFn.
+    Returns:
+    jQuery
+    Arguments:
+
+    matchedFn
+
+        A function or function reference. Gets fired for each matched element.
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p") 
+        .expire(function(){  
+            $(this).addClass('livequerytest'); 
+        });
+
+expire(Function matchedFn, Function unmatchedFn)
+
+    This will stop/expire all live queries associated with the selector, matchedFn and unmatchedFn. The unmatchedFn is called for each element it had matched.
+    Returns:
+    jQuery
+    Arguments:
+
+    matchedFn
+
+        A function or function reference. Gets fired for each matched element.
+    unmatchedFn
+
+        A function or function reference. Gets fired for each element no longer matched.
+
+    Chainable:
+    Yes
+    Example:
+
+    $("p") 
+        .expire(function(){  
+            $(this).addClass('livequerytest'); 
+        }, function() { 
+            $(this).removeClass('livequerytest'); 
+        });
+
+
+
+
+
+=== References ===
+ * [http://code.google.com/p/jquery-utils/wiki/UiTimepickrDev Development notes]
+ * [http://en.wikipedia.org/wiki/12-hour_clock 12-hour clock]
+ * [http://en.wikipedia.org/wiki/24-hour_clock 24-hour clock]
