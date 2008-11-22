@@ -1,0 +1,39 @@
+#labels Featured
+http://jquery-utils.googlecode.com/svn/trunk/demo/data/logo_jquery-utils.jpg
+
+== Introduction ==
+
+A collection of some utilities I often re-use and didn't know where to put.
+
+== $.exp ==
+
+|| *Expression  || *Argument || *Description ||
+|| `:icontains` || string || Matches elements which contain the given text (case insensitive). ||
+
+
+== $.methods ==
+
+|| *Method || *Argument || *Return || *Description ||
+|| `$.redirect` || string || - || Shortcut for `window.location.href = str;` ||
+|| `$.stop` || e, preventDefault, stopPropagation || boolean || Ex: `return $.stop(e, false, true)` ||
+|| `$.basename` || string || string ||  Returns the base name of a path  ||
+|| `$.filename` || string || string ||  Returns the file name of a path  ||
+|| `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
+|| `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
+|| `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
+|| `$.range` || start, strop, steps || object || Returns a range object ||
+
+== $.fn.methods ==
+
+|| *Method || *Argument || *Description ||
+|| `$.selectRange` || start, end || Select a text range in a textarea ||
+
+== Credits ==
+
+Copyright (c) 2007-2008 [http://haineault.com/ Maxime Haineault] 
+
+$.range: Copyright (c) 2007-2008 [http://blog.outofhanwell.com/2006/03/29/javascript-range-function/ Matthias Miller] 
+
+== License ==
+
+MIT License ~ http://www.opensource.org/licenses/mit-license.php
