@@ -5,7 +5,7 @@
     * [CountDown jquery.countdown.js]
     * [CyCle jquery.cycle.js]
     * [DelayedObserver jquery.delayedobserver.js]
-    * jquery.flash.js
+    * [jQueryFlash jquery.flash.js]
     * jquery.ifixpng.js
     * [LiveQuery jquery.livequery.js]
     * jquery.mousewheel.js
