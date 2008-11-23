@@ -4,19 +4,19 @@
     * jquery.cookie.js
     * jquery.countdown.js
     * jquery.cycle.js
-    * jquery.delayedobserver.js
+    * [DelayedObserver jquery.delayedobserver.js]
     * jquery.flash.js
     * jquery.ifixpng.js
-    * jquery.livequery.js
+    * [LiveQuery jquery.livequery.js]
     * jquery.mousewheel.js
     * jquery.strings.js
     * jquery.timeago.js
-    * jquery.utils.js
+    * [JqueryUtils jquery.utils.js]
     * jquery.youtubelinkstoembed.js
   * Widgets
     * ui.masked.js
-    * ui.toaster.js
-    * ui.timepickr.js
+    * [UiToaster ui.toaster.js]
+    * [UiTimepickr ui.timepickr.js]
     * jquery.dropslide.js
   * Experimental
     * jquery.extendCSS.js
