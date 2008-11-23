@@ -16,9 +16,3 @@ $.anchorHandler
     .add(/\#/,                  smoothScrollToLink);
 
 }}}
-
-Note: the add method also accept arrays.
-
-----
-
-IndexPage
