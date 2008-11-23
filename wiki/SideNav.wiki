@@ -20,7 +20,7 @@
     * [UiTimepickr ui.timepickr.js]
     * jquery.dropslide.js
   * Experimental
-    * jquery.extendCSS.js
+    * [ExtendCss jquery.extendCSS.js]
     * jquery.jpath.js
     * jquery.valid.js
     * jquery.imgSelection.js
