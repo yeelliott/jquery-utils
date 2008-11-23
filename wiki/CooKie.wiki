@@ -1,0 +1,38 @@
+#sidebar SideNav
+
+= jquery.cookie.js =
+
+== Basic set cookie ==
+
+{{{
+
+$.cookie('the_cookie', 'the_value');
+
+}}}
+
+== Set cookie with options ==
+
+{{{
+
+$.cookie('the_cookie', 'the_value', { expires: 7, path: '/', domain: 'jquery.com', secure: true });
+
+}}}
+
+
+== Unset cookie ==
+
+{{{
+
+$.cookie('the_cookie', null);
+
+}}}
+
+== License ==
+
+Dual licensed under the [http://www.opensource.org/licenses/mit-license.php MIT] and [http://www.opensource.org/licenses/gpl-license.php GPL] licenses
+
+Copyright (c) 2006 Klaus Hartl (stilbuero.de)
+
+=== References ===
+
+ * [http://stilbuero.de/jquery/cookie/ Official Website]
