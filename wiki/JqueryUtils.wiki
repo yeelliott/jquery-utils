@@ -3,6 +3,9 @@
 
 = jquery.utils.js = 
 
+|| *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
 == Introduction ==
 
 A collection of some utilities I often re-use and didn't know where to put.
@@ -65,14 +68,7 @@ Taken from [http://code.google.com/p/jquery-ui/source/browse/trunk/ui/ui.core.js
 || *Method || *Argument || *Description ||
 || `$.selectRange` || start, end || Select a text range in a textarea ||
 
-== Credits ==
+== Other credits ==
 
-Copyright (c) 2007-2008 [http://haineault.com/ Maxime Haineault] 
-
-$.range: Copyright (c) 2007-2008 [http://blog.outofhanwell.com/2006/03/29/javascript-range-function/ Matthias Miller] 
-
-$.keyCode: Copyright (c) 2008 [http://code.google.com/p/jquery-ui/source/browse/trunk/AUTHORS.txt?r=991 jQuery UI authors] (http://ui.jquery.com/about)
-
-== License ==
-
-MIT License ~ http://www.opensource.org/licenses/mit-license.php
+|| *$.range* || Copyright (c) 2007-2008 [http://blog.outofhanwell.com/2006/03/29/javascript-range-function/ Matthias Miller] ||
+|| *$.keyCode* || Copyright (c) 2008 [http://code.google.com/p/jquery-ui/source/browse/trunk/AUTHORS.txt?r=991 jQuery UI authors] (http://ui.jquery.com/about) ||
