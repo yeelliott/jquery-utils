@@ -2,6 +2,9 @@
 
 = jquery.countdown.js =
 
+|| *Author* || Copyright (c) 2007-2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
 == Basic usage ==
 
 {{{
@@ -60,9 +63,3 @@ $('#countdown-5').countdown({year: '+1'});
 }}}
 
 *Note:* By now, only works for years and months. 
-
-== License ==
-
-MIT License ~ http://www.opensource.org/licenses/mit-license.php
-
-Copyright (c) 2007-2008 Maxime Haineault (haineault.com)
