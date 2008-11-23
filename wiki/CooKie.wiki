@@ -1,5 +1,3 @@
-#sidebar SideNav
-
 = jquery.cookie.js =
 
 || *Author* || Copyright (c) 2006 Klaus Hartl ([http://stilbuero.de stilbuero.de]) ||
