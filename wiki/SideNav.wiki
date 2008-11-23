@@ -2,7 +2,7 @@
   * Plugins
     * [AnchorHandler jquery.anchorhandler.js]
     * [CooKie jquery.cookie.js]
-    * jquery.countdown.js
+    * [CountDown jquery.countdown.js]
     * jquery.cycle.js
     * [DelayedObserver jquery.delayedobserver.js]
     * jquery.flash.js
