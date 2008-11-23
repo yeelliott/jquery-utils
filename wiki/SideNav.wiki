@@ -1,4 +1,4 @@
-  * [http://code.google.com/p/jquery-utils/ ↑ Home]
+  * [http://code.google.com/p/jquery-utils/ ⟰ Home]
   * Plugins
     * [AnchorHandler jquery.anchorhandler.js]
     * [CooKie jquery.cookie.js]
