@@ -6,7 +6,7 @@
     * [CyCle jquery.cycle.js]
     * [DelayedObserver jquery.delayedobserver.js]
     * [jQueryFlash jquery.flash.js]
-    * jquery.ifixpng.js
+    * [iFixPng jquery.ifixpng.js]
     * [LiveQuery jquery.livequery.js]
     * jquery.mousewheel.js
     * [StringFormat jquery.strings.js]
