@@ -1,6 +1,6 @@
 #sidebar SideNav
 
-= Delayed Observer =
+= jquery.delayedobserver.js =
 
 A delayed observer, useful for handling user inputs to avoid calling the callback function too often.
 
