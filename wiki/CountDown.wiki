@@ -1,0 +1,70 @@
+#sidebar SideNav
+
+= jquery.countdown.js =
+
+== Basic usage ==
+
+{{{
+
+// default format is '%d [day|days] %hh %mm %ss'
+var d = new Date();
+
+$('#countdown-1').countdown({now: 'Happy new year !', 
+    year: d.getFullYear()+1, month: d.getMonth()+1, day: d.getDate()+1, hour: 1, min: 1, sec: 1 
+});
+
+
+}}}
+
+== Custom format ==
+
+{{{
+
+$('#countdown-2').countdown({
+    format: '%d jours, %h heures %m minutes et %s secondes',
+    year: 2030, month: 12, day: 1
+});
+
+
+}}}
+
+
+== Handling plurals ==
+
+{{{
+
+$('#countdown-4').countdown({
+    format: '%d [jour|jours], %h [heure|heures] %m [minute|minutes] et %s [seconde|secondes]',
+    year: 2038, month: 1, day: 1
+});
+
+}}}
+
+== Now message ==
+
+{{{
+
+$('#countdown-4').countdown({
+    now: 'Happy new yearbug !',
+    year: 2038, month: 1, day: 1
+});
+
+}}}
+
+== Functional arguments ==
+
+{{{
+
+$('#countdown-5').countdown({year: '+1'});
+
+}}}
+
+== License ==
+
+Dual licensed under the [http://www.opensource.org/licenses/mit-license.php MIT] and [http://www.opensource.org/licenses/gpl-license.php GPL] licenses
+
+Copyright (c) 2006 Klaus Hartl (stilbuero.de)
+
+=== References ===
+
+ * [http://stilbuero.de/jquery/cookie/ Official Website]
