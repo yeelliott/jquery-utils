@@ -3,6 +3,10 @@
 
 http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
 
+|| *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+|| *Website* || http://haineault.com/media/jquery/ui-timepickr/page/ ||
+
 == Introduction ==
 
 jquery.timepickr was created in a attempt to make the process of inputing time in a form as easy an natural as posssible. 
