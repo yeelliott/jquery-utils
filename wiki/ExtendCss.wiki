@@ -1,5 +1,3 @@
-#sidebar SideNav
-
 = jquery.extendCSS.js =
 
 || *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
