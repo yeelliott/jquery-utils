@@ -1,6 +1,4 @@
 #labels Featured
-#sidebar SideNav
-
 = ui.timepickr.js =
 
 || *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
