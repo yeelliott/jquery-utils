@@ -1,6 +1,4 @@
 #labels Featured
-#sidebar SideNav
-
 = jquery.utils.js = 
 
 || *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
