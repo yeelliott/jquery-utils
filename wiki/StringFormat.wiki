@@ -1,6 +1,4 @@
 #labels Featured
-= jquery.strings.js = 
-
 || *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
 
