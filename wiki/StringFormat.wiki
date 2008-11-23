@@ -1,13 +1,80 @@
 #labels Featured
+#sidebar SideNav
+
 = jquery.strings.js = 
 
-== Introduction ==
+== calc ==
+
+=== Basic usage ===
+
+{{{
+
+// outputs "10"
+$.calc('{a} + {b}', {a: 5, b: 5});
+
+}}}
+
+=== Formatting ===
+
+==== Input formatting ====
+
+{{{
+
+// outputs 1344.4223
+$.calc('{a:02d} + {b}', {a: 1222.2243, b: 122.4223});
+
+}}}
+
+==== Input formatting ====
+
+{{{
+
+// outputs 1344.42
+$.calc('{a:02d} + {b}', 
+    {a: 1222.2243, b: 122.4223},
+    '{0:02d}');
+
+}}}
+
+*NOTE*: will soon be implemented
+
+== strConversion ==
+
+See format _Conversions types_.
+
+== repeat ==
+
+{{{
+
+$.repeat('h', 3); // outpus "hhh"
+
+}}}
+
+== UTF8encode ==
+
+{{{
+
+$.UTF8encode('é'); // outputs "Ã©"
+
+}}}
+
+== UTF8decode ==
+
+{{{
+
+$.UTF8decoe("Ã©"); // outputs "é"
+
+}}}
+
+*TO FIX:* Seems to be broken..
+
+== format ==
 
 Format is an implementation of the  [http://www.python.org/dev/peps/pep-3101/ Python 3k Advanced String Formatting].
 
-== Usage examples ==
+=== Usage examples ===
 
-=== Simple replacement ===
+==== Simple replacement ====
 
 {{{
 
@@ -18,7 +85,7 @@ $.format('{0}bc', 1)       // normal arguments
 
 }}}
 
-=== Type conversion ===
+==== Type conversion ====
 
 {{{
 
@@ -30,7 +97,7 @@ $.format('{a:.2f}bc', {a:'1'}) // returns 1.00bc
 
 }}}
 
-=== Padding ===
+==== Padding ====
 
 {{{
 
@@ -38,7 +105,7 @@ $.format('{a:08.2f}bc', {a:'1'}) // return 00001.00bc
 
 }}}
 
-=== User defined formatting ===
+==== User defined formatting ====
 
 {{{
 
@@ -50,14 +117,13 @@ $.format('{0:U}bc', 'a') // return Abc
 
 }}}
 
-=== Known differences ===
-
+==== Known differences ====
 
  * JavaScript precision is more limited than Python
  * Python zero pad exponent (10 -> 1.0e+01), not JavaScript (10 -> 1.0e+1)
  * My repr implementation is not like the python one
 
-=== The conversion flags ===
+==== The conversion flags ====
 
 || *Flag* || *Meaning* ||
 || # || The value conversion will use the ``alternate form'' (where defined below). ||
@@ -70,7 +136,7 @@ $.format('{0:U}bc', 'a') // return Abc
 
  # Not supported yet
 
-=== Conversions types ===
+==== Conversions types ====
 
 || *Conversion* || *Meaning* || *Notes* ||
 || d ||	Signed integer decimal. || || 	
@@ -115,7 +181,7 @@ Source: http://docs.python.org/lib/typesseq-strings.html
 
 Note: if you pass/fail the test suite on other browser please send me your browser string with the results, thanks.
 
-=== TODO ===
+==== TODO ====
 
  * -|+|\s flags handling
  * sprintf
@@ -124,7 +190,7 @@ Note: if you pass/fail the test suite on other browser please send me your brows
  * jQuery.fn extention (jformat)
  * create documentation (when the API will be freezed)
 
-=== References ===
+==== References ====
 
  * [http://docs.python.org/lib/typesseq-strings.html Conversion types]
  * [http://www.python.org/dev/peps/pep-3101/ Implementation details]
