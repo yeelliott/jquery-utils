@@ -9,7 +9,7 @@
     * jquery.ifixpng.js
     * [LiveQuery jquery.livequery.js]
     * jquery.mousewheel.js
-    * jquery.strings.js
+    * [StringFormat jquery.strings.js]
     * jquery.timeago.js
     * [JqueryUtils jquery.utils.js]
     * jquery.youtubelinkstoembed.js
