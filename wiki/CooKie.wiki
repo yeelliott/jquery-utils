@@ -2,6 +2,10 @@
 
 = jquery.cookie.js =
 
+|| *Author* || Copyright (c) 2006 Klaus Hartl ([http://stilbuero.de stilbuero.de]) ||
+|| *License* || Dual licensed under the [http://www.opensource.org/licenses/mit-license.php MIT] and [http://www.opensource.org/licenses/gpl-license.php GPL] licenses ||
+|| *Website* || http://stilbuero.de/jquery/cookie/ ||
+
 == Basic set cookie ==
 
 {{{
@@ -26,13 +30,3 @@ $.cookie('the_cookie', 'the_value', { expires: 7, path: '/', domain: 'jquery.com
 $.cookie('the_cookie', null);
 
 }}}
-
-== License ==
-
-Dual licensed under the [http://www.opensource.org/licenses/mit-license.php MIT] and [http://www.opensource.org/licenses/gpl-license.php GPL] licenses
-
-Copyright (c) 2006 Klaus Hartl (stilbuero.de)
-
-=== References ===
-
- * [http://stilbuero.de/jquery/cookie/ Official Website]
