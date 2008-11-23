@@ -21,7 +21,7 @@
     * jquery.dropslide.js
   * Experimental
     * [ExtendCss jquery.extendCSS.js]
-    * jquery.jpath.js
+    * [JpaTh jquery.jpath.js]
     * jquery.valid.js
     * jquery.imgSelection.js
     * jquery.imgTools.js
