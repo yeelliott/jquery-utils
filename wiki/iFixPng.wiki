@@ -1,5 +1,3 @@
-#sidebar SideNav
-
 = jquery.ifixpng.js =
 
 || *Author* || Copyright (c) 2007-2008 Kush M. ([http://khurshid.com khurshid.com]) ||
