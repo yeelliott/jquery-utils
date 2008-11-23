@@ -1,6 +1,8 @@
 #labels Featured
 #sidebar SideNav
 
+= jquery.utils.js = 
+
 == Introduction ==
 
 A collection of some utilities I often re-use and didn't know where to put.
