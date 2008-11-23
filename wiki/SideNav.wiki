@@ -27,3 +27,6 @@
     * jquery.imgTools.js
     * jquery.awesomebar.js
     * jquery.keynav.js
+  * Other
+    * [BuildSystem The build system]
+    * [UiTimepickrDev Timepickr for developers]
