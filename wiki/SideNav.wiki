@@ -1,7 +1,7 @@
   * [http://code.google.com/p/jquery-utils/ ↑ Home]
   * Plugins
     * [AnchorHandler jquery.anchorhandler.js]
-    * jquery.cookie.js
+    * [CooKie jquery.cookie.js]
     * jquery.countdown.js
     * jquery.cycle.js
     * [DelayedObserver jquery.delayedobserver.js]
