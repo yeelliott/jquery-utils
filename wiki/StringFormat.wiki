@@ -3,8 +3,6 @@
 
 = jquery.strings.js = 
 
-== TOC ==
-
 <wiki:toc max_depth="2" />
 
 == calc ==
