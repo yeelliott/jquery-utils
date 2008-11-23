@@ -3,7 +3,7 @@
     * [AnchorHandler jquery.anchorhandler.js]
     * [CooKie jquery.cookie.js]
     * [CountDown jquery.countdown.js]
-    * jquery.cycle.js
+    * [CyCle jquery.cycle.js]
     * [DelayedObserver jquery.delayedobserver.js]
     * jquery.flash.js
     * jquery.ifixpng.js
