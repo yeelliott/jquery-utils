@@ -1,4 +1,6 @@
 #labels Featured
+#sidebar SideNav
+
 == Introduction ==
 
 A collection of some utilities I often re-use and didn't know where to put.
