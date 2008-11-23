@@ -2,6 +2,9 @@
 
 = jquery.delayedobserver.js =
 
+|| *Author* || Copyright (c) 2007-2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
 A delayed observer, useful for handling user inputs to avoid calling the callback function too often.
 
 Autocomplete fields is a common situation where this mechanism is useful. You must post pone the AJAX call until the user stops typing to prevent fast typers to fire too much requests to the server and most likely hang the browser.
