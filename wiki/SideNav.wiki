@@ -7,6 +7,7 @@
     * [DelayedObserver jquery.delayedobserver.js]
     * [jQueryFlash jquery.flash.js]
     * [iFixPng jquery.ifixpng.js]
+    * [I18N jquery.i18n.js]
     * [LiveQuery jquery.livequery.js]
     * jquery.mousewheel.js
     * [StringFormat jquery.strings.js]
