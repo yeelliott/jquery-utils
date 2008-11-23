@@ -1,6 +1,4 @@
 #labels Featured
-#sidebar SideNav
-
 http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/page/logo.png
 
 = Development notes =
