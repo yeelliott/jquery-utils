@@ -1,4 +1,6 @@
 #labels Featured
+#sidebar SideNav
+
 = Build system =
 
 == Introduction ==
