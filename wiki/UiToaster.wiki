@@ -1,7 +1,7 @@
 #labels Featured
 #sidebar SideNav
 
-= jQuery-utils: ui.toaster.js = 
+= ui.toaster.js = 
 
 == Introduction ==
 
