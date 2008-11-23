@@ -2,6 +2,10 @@
 
 = jquery.anchorhandler.js = 
 
+|| *Author* || Copyright (c) 2007-2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
+
 This jQuery plugin allow to use regular expressions to attach events on url hanchor.. it's less complicated and more useful than it sounds :)
 
 It's a clever and neat way to handle custom URLs that I borrowed from django's clever [http://www.djangoproject.com/documentation/url_dispatch/ URL dispatcher].
