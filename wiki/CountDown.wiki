@@ -59,12 +59,10 @@ $('#countdown-5').countdown({year: '+1'});
 
 }}}
 
+*Note:* By now, only works for years and months. 
+
 == License ==
 
-Dual licensed under the [http://www.opensource.org/licenses/mit-license.php MIT] and [http://www.opensource.org/licenses/gpl-license.php GPL] licenses
+MIT License ~ http://www.opensource.org/licenses/mit-license.php
 
-Copyright (c) 2006 Klaus Hartl (stilbuero.de)
-
-=== References ===
-
- * [http://stilbuero.de/jquery/cookie/ Official Website]
+Copyright (c) 2007-2008 Maxime Haineault (haineault.com)
