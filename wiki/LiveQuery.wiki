@@ -1,5 +1,3 @@
-#sidebar SideNav
-
 = jquery.livequery.js =
 
 || *Author* || Copyright (c) 2007 Brandon Aaron ([http://brandonaaron.net brandonaaron.net]) ||
