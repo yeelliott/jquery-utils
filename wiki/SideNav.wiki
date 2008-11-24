@@ -9,7 +9,7 @@
     * [iFixPng jquery.ifixpng.js]
     * [I18N jquery.i18n.js]
     * [LiveQuery jquery.livequery.js]
-    * jquery.mousewheel.js
+    * [MouseWheel jquery.mousewheel.js]
     * [StringFormat jquery.strings.js]
     * [TimeAgo jquery.timeago.js]
     * [JqueryUtils jquery.utils.js]
