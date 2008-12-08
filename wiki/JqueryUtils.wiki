@@ -24,11 +24,10 @@ A collection of some utilities I often re-use and didn't know where to put.
 || `$.basename` || string || string ||  Returns the base name of a path  ||
 || `$.filename` || string || string ||  Returns the file name of a path  ||
 || `$.filesizeformat` || string || string ||  Format a file size (ex: 1024 -> 1MB)  ||
-
 || `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
 || `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
 || `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
-|| `$.tpl` || mixed || mixed || Minimalistic template system ||
+|| `$.tpl` || mixed || mixed || Minimalistic template system (see below for examples) ||
 || `$.range` || start, strop, steps || object || Returns a range object ||
 
 == $.keyCode ==
@@ -70,6 +69,44 @@ Taken from [http://code.google.com/p/jquery-ui/source/browse/trunk/ui/ui.core.js
 
 || *Method* || *Argument* || *Description* ||
 || `$.fn.selectRange` || start, end || Select a text range in a textarea ||
+
+
+== $.tpl ==
+
+=== Creating the template ===
+
+{{{
+
+$.tpl('tweet', [
+    '<div id="tweet-{id:s}" class="tweet">',
+        '<div class="tweet-body"><b>@{from:s}</b>: {body:s}',
+            '(<a href="{href:s}" class="tweet-date">',
+                '<abbr title="{timestamp:s}">{timesince:s}</abbr>',
+            '</a>)',
+        '</div>',
+    '</div>'
+]);
+
+}}}
+
+=== Rendering ===
+
+{{{
+
+$.getJSON('/tweets/username/', function(resp, s){
+    $.each(resp.tweets, function(idx, tweet) {
+        $.tpl('tweet', {
+            id: tweet.id,
+            body: tweet.body,
+            from: tweet.screen_name,
+            timestamp: tweet.pub_time,
+            timesince: $.timeago(tweet.pub_time)
+        }).appendTo('#tweet-list');
+    });
+});
+
+}}}
+
 
 == Other credits ==
 
