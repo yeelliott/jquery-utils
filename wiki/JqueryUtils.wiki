@@ -28,6 +28,7 @@ A collection of some utilities I often re-use and didn't know where to put.
 || `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
 || `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
 || `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
+|| `$.tpl` || mixed || mixed || Minimalistic template system ||
 || `$.range` || start, strop, steps || object || Returns a range object ||
 
 == $.keyCode ==
@@ -68,7 +69,7 @@ Taken from [http://code.google.com/p/jquery-ui/source/browse/trunk/ui/ui.core.js
 == $.fn.methods ==
 
 || *Method* || *Argument* || *Description* ||
-|| `$.selectRange` || start, end || Select a text range in a textarea ||
+|| `$.fn.selectRange` || start, end || Select a text range in a textarea ||
 
 == Other credits ==
 
