@@ -18,7 +18,7 @@
     * ui.masked.js
     * [UiToaster ui.toaster.js]
     * [UiTimepickr ui.timepickr.js]
-    * jquery.dropslide.js
+    * ui.dropslide.js
   * Experimental
     * [ExtendCss jquery.extendCSS.js]
     * [JpaTh jquery.jpath.js]
