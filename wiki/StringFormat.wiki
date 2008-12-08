@@ -4,6 +4,42 @@
 
 <wiki:toc max_depth="3" />
 
+== $.tpl ==
+
+=== Creating the template ===
+
+{{{
+
+$.tpl('tweet', [
+    '<div id="tweet-{id:s}" class="tweet">',
+        '<div class="tweet-body"><b>@{from:s}</b>: {body:s}',
+            '(<a href="{href:s}" class="tweet-date">',
+                '<abbr title="{timestamp:s}">{timesince:s}</abbr>',
+            '</a>)',
+        '</div>',
+    '</div>'
+]);
+
+}}}
+
+=== Rendering ===
+
+{{{
+
+$.getJSON('/tweets/username/', function(resp, s){
+    $.each(resp.tweets, function(idx, tweet) {
+        $.tpl('tweet', {
+            id: tweet.id,
+            body: tweet.body,
+            from: tweet.screen_name,
+            timestamp: tweet.pub_time,
+            timesince: $.timeago(tweet.pub_time)
+        }).appendTo('#tweet-list');
+    });
+});
+
+}}}
+
 == calc ==
 
 === Basic usage ===
