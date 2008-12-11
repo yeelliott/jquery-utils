@@ -1,0 +1,18 @@
+= jquery.arrayUtils.js = 
+
+|| *Author* || Copyright (c) 2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
+<wiki:toc max_depth="3" />
+
+== Introduction ==
+
+Provide additional functional method to work with array. This library is largely inspired by the [enumerables http://www.prototypejs.org/api/enumerable] concept in the [Prototype Javascript Library http://www.prototypejs.org/].
+
+== Methods ==
+
+|| *Method* || *Returns* || *Descriptions* ||
+|| `$.all` || `boolean` || Determines whether all the elements are boolean-equivalent to true, either directly or through computation by the provided iterator ||
+|| `$.any` || `boolean` || Determines whether at least one element is boolean-equivalent to true, either directly or through computation by the provided iterator ||
+|| `$.find` || `mixed` || Finds the first element for which the iterator returns true. ||
+
