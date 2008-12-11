@@ -7,7 +7,7 @@
 
 == Introduction ==
 
-Provide additional functional method to work with array. This library is largely inspired by the [enumerables http://www.prototypejs.org/api/enumerable] concept in the [Prototype Javascript Library http://www.prototypejs.org/].
+Provide additional functional method to work with array. This library is largely inspired by the [http://www.prototypejs.org/api/enumerable enumerables] concept in the [http://www.prototypejs.org/ Prototype Javascript Library].
 
 == Methods ==
 
