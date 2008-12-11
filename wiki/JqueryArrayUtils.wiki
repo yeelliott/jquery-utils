@@ -32,7 +32,5 @@ These methods are available with jQuery core.
 || [http://docs.jquery.com/Utilities/jQuery.map $.map] || `array` || Translate all items in an array to another array of items ||
 || [http://docs.jquery.com/Traversing/slice#startend $.slice] || `array` || Selects a subset of the matched elements ||
 || [http://docs.jquery.com/Utilities/jQuery.unique $.unique] || `array` || Remove all duplicate elements from an array of elements ||
-
-
-
+|| [http://docs.jquery.com/Utilities/jQuery.size $.size] || `number` || Return the size of a collection or an array ||
 
