@@ -15,4 +15,6 @@ Provide additional functional method to work with array. This library is largely
 || `$.all` || `boolean` || Determines whether all the elements are boolean-equivalent to true, either directly or through computation by the provided iterator ||
 || `$.any` || `boolean` || Determines whether at least one element is boolean-equivalent to true, either directly or through computation by the provided iterator ||
 || `$.find` || `mixed` || Finds the first element for which the iterator returns true. ||
-
+|| `$.findAll` || `array` || Returns all the elements for which the iterator returned true. ||
+|| `$.pluck` || `array` || Fetch the same property for all the elements and returns the property values. ||
+|| `$.zip` || `array` || Zips together 2 sequences, providing an array of tuples. Each tuple contains one value per original sequence. Tuples can be converted to something else by applying the optional iterator on them. ||
