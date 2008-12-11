@@ -14,9 +14,18 @@ Provide additional functional method to work with array. This library is largely
 || *Method* || *Returns* || *Descriptions* ||
 || `$.all` || `boolean` || Determines whether all the elements are boolean-equivalent to true, either directly or through computation by the provided iterator ||
 || `$.any` || `boolean` || Determines whether at least one element is boolean-equivalent to true, either directly or through computation by the provided iterator ||
-|| `$.detect` || `mixed` || Finds the first element for which the iterator returns true. ||
-|| `$.collect` || `array` || Returns all the elements for which the iterator returned true. ||
-|| `$.pluck` || `array` || Fetch the same property for all the elements and returns the property values. ||
+|| `$.detect` || `mixed` || Finds the first element for which the iterator returns true ||
+|| `$.eachSlice` || `array` || Groups items in chunks based on a given size, with last chunk being possibly smaller ||
+|| `$.inject` || `number` || Incrementally builds a result value based on the successive results of the iterator. This can be used for array construction, numerical sums/averages, etc ||
+|| `$.invoke` || `array` || Invokes the same method, with the same arguments, for all items in a collection. Returns the results of the method calls ||
+|| `$.max` || `array` || Returns the maximum element (or element-based computation), or false if the enumeration is empty. Elements are either compared directly, or by first applying the iterator and comparing returned values ||
+|| `$.min` || `array` || Returns the minimum element (or element-based computation), or false if the enumeration is empty. Elements are either compared directly, or by first applying the iterator and comparing returned values ||
+|| `$.partition` || `array` || Partitions the elements in two groups: those regarded as true, and those considered false. By default, regular JavaScript boolean equivalence is used, but an iterator can be provided, that computes a boolean representation of the elements. ||
+|| `$.partition` || `array` || Partitions the elements in two groups: those regarded as true, and those considered false. By default, regular JavaScript boolean equivalence is used, but an iterator can be provided, that computes a boolean representation of the elements. ||
+|| `$.pluck` || `array` || Fetch the same property for all the elements and returns the property values ||
+|| `$.reject` || `array` || Returns all the elements for which the iterator returned false ||
+|| `$.select` || `array` || Returns all the elements for which the iterator returned true ||
+|| `$.sum` || `number` || Returns the sum of a given array ||
 || `$.zip` || `array` || Zips together 2 sequences, providing an array of tuples. Each tuple contains one value per original sequence. Tuples can be converted to something else by applying the optional iterator on them. ||
 
 == Complementary methods ==
@@ -33,4 +42,3 @@ These methods are available with jQuery core.
 || [http://docs.jquery.com/Traversing/slice#startend $.slice] || `array` || Selects a subset of the matched elements ||
 || [http://docs.jquery.com/Utilities/jQuery.unique $.unique] || `array` || Remove all duplicate elements from an array of elements ||
 || [http://docs.jquery.com/Utilities/jQuery.size $.size] || `number` || Return the size of a collection or an array ||
-
