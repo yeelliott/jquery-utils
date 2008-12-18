@@ -19,15 +19,17 @@ A collection of some utilities I often re-use and didn't know where to put.
 == $.methods ==
 
 || *Method* || *Argument* || *Return* || *Description* ||
-|| `$.redirect` || string || - || Shortcut for `window.location.href = str;` ||
-|| `$.stop` || e, preventDefault, stopPropagation || boolean || Ex: `return $.stop(e, false, true)` ||
 || `$.basename` || string || string ||  Returns the base name of a path  ||
 || `$.filename` || string || string ||  Returns the file name of a path  ||
 || `$.filesizeformat` || string || string ||  Format a file size (ex: 1024 -> 1MB)  ||
-|| `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
 || `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
-|| `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
+|| `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
+|| `$.pxToEm` || string, object || string || pxToEm converts a pixel value to ems depending on inherited font size ||
 || `$.range` || start, strop, steps || object || Returns a range object ||
+|| `$.redirect` || string || - || Shortcut for `window.location.href = str;` ||
+|| `$.stop` || e, preventDefault, stopPropagation || boolean || Ex: `return $.stop(e, false, true)` ||
+|| `$.toCurrency` || mixed || boolean || Converts argument to double digit decimal ||
+
 
 == $.keyCode ==
 
@@ -67,6 +69,7 @@ Taken from [http://code.google.com/p/jquery-ui/source/browse/trunk/ui/ui.core.js
 == $.fn.methods ==
 
 || *Method* || *Argument* || *Description* ||
+|| `$.fn.equalHeights` || px || Compares the heights or widths of the top-level children of a provided element and sets their min-height to the tallest height (or width to widest width). Sets in em units by default if pxToEm() method is available ||
 || `$.fn.selectRange` || start, end || Select a text range in a textarea ||
 
 == Other credits ==
