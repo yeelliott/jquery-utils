@@ -60,4 +60,16 @@ $('#countdown-5').countdown({year: '+1'});
 
 }}}
 
-*Note:* By now, only works for years and months. 
+== Options ==
+
+|| *Option*    || *Default* || *Description* ||
+|| `year`      || `now.getFullYear()` || Year value to countdown from ||
+|| `month`     || `now.getMonth()`    || Month value to countdown from ||
+|| `week`      || `now.getDate()`     || Week value to countdown from ||
+|| `day`       || `getWeek(now)`      || Day value to countdown from ||
+|| `hour`      || `now.getHours()`    || Hour value to countdown from ||
+|| `min`       || `now.getMinutes()`  || Minute value to countdown from ||
+|| `sec`       || `now.getSeconds()`  || Second value to countdown from ||
+|| `msgFormat` || `'%d [day|days] %hh %mm %ss'` || Format of the countdown string ||
+|| `msgNow`    || `'Now !'`           || String to display when reaching zero ||
+|| `interval`  || `1000`              || Update interval ||
