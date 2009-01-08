@@ -3,6 +3,33 @@
 || *Author* || Copyright (c) 2007-2008 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
 
+== Options ==
+
+|| *Option*    || *Default* || *Description* ||
+|| `year`      || `now.getFullYear()` || Year value to countdown from, may be a four digits year representation (ex: 2009) or a functional argument (ex: y+2) ||
+|| `month`     || `now.getMonth()`    || Month value to countdown from (1 to 12) ||
+|| `week`      || `now.getDate()`     || Week value to countdown from (1 to 52) ||
+|| `day`       || `getWeek(now)`      || Day value to countdown from (1 to 31) ||
+|| `hour`      || `now.getHours()`    || Hour value to countdown from (0 to 23)  ||
+|| `min`       || `now.getMinutes()`  || Minute value to countdown from (0 to 59) ||
+|| `sec`       || `now.getSeconds()`  || Second value to countdown from (0 to 59) ||
+|| `msgFormat` || `'%d [day|days] %hh %mm %ss'` || Format of the countdown string (see _string format tokens below) ||
+|| `msgNow`    || `'Now !'`           || String to display when reaching zero ||
+|| `interval`  || `1000`              || Update interval in milliseconds ||
+
+
+== String format tokens  ==
+
+|| *Token* || *Represents* ||
+|| `%y`    || Year(s)      ||
+|| `%M`    || Month(s)     ||
+|| `%w`    || Week(s)      ||
+|| `%d`    || Day(s)       ||
+|| `%h`    || Hour(s)      ||
+|| `%m`    || Minute(s)    ||
+|| `%s`    || Second(s)    ||
+
+
 == Basic usage ==
 
 {{{
@@ -59,17 +86,3 @@ $('#countdown-4').countdown({
 $('#countdown-5').countdown({year: '+1'});
 
 }}}
-
-== Options ==
-
-|| *Option*    || *Default* || *Description* ||
-|| `year`      || `now.getFullYear()` || Year value to countdown from ||
-|| `month`     || `now.getMonth()`    || Month value to countdown from ||
-|| `week`      || `now.getDate()`     || Week value to countdown from ||
-|| `day`       || `getWeek(now)`      || Day value to countdown from ||
-|| `hour`      || `now.getHours()`    || Hour value to countdown from ||
-|| `min`       || `now.getMinutes()`  || Minute value to countdown from ||
-|| `sec`       || `now.getSeconds()`  || Second value to countdown from ||
-|| `msgFormat` || `'%d [day|days] %hh %mm %ss'` || Format of the countdown string ||
-|| `msgNow`    || `'Now !'`           || String to display when reaching zero ||
-|| `interval`  || `1000`              || Update interval ||
