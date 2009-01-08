@@ -23,6 +23,7 @@ Provide additional functional method to work with array. This library is largely
 || `$.partition` || `array` || Partitions the elements in two groups: those regarded as true, and those considered false. By default, regular JavaScript boolean equivalence is used, but an iterator can be provided, that computes a boolean representation of the elements. ||
 || `$.partition` || `array` || Partitions the elements in two groups: those regarded as true, and those considered false. By default, regular JavaScript boolean equivalence is used, but an iterator can be provided, that computes a boolean representation of the elements. ||
 || `$.pluck` || `array` || Fetch the same property for all the elements and returns the property values ||
+|| `$.randomize` || `array` || Returns a randomized version of an array ||
 || `$.reject` || `array` || Returns all the elements for which the iterator returned false ||
 || `$.select` || `array` || Returns all the elements for which the iterator returned true ||
 || `$.sum` || `number` || Returns the sum of a given array ||
