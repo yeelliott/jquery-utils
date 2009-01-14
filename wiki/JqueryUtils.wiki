@@ -22,6 +22,7 @@ A collection of some utilities I often re-use and didn't know where to put.
 || `$.basename` || string || string ||  Returns the base name of a path  ||
 || `$.filename` || string || string ||  Returns the file name of a path  ||
 || `$.filesizeformat` || string || string ||  Format a file size (ex: 1024 -> 1MB)  ||
+|| `$.delay` || int, function || jQuery ||  Chainable delay (for methods and animations) ||
 || `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
 || `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
 || `$.pxToEm` || string, object || string || pxToEm converts a pixel value to ems depending on inherited font size ||
