@@ -16,6 +16,7 @@
     * [JqueryUtils jquery.utils.js]
     * jquery.youtubelinkstoembed.js
   * Widgets
+    * [UiBuilder ui.builder.js]
     * ui.masked.js
     * [UiToaster ui.toaster.js]
     * [UiTimepickr ui.timepickr.js]
