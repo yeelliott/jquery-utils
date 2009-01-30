@@ -7,7 +7,7 @@
     * [CyCle jquery.cycle.js]
     * [DelayedObserver jquery.delayedobserver.js]
     * [jQueryFlash jquery.flash.js]
-    * [iFixPng jquery.ifixpng.js]
+    * [ddBelated jquery.ddbelated.js]
     * [I18N jquery.i18n.js]
     * [LiveQuery jquery.livequery.js]
     * [MouseWheel jquery.mousewheel.js]
