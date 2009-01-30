@@ -40,6 +40,25 @@ $.getJSON('/tweets/username/', function(resp, s){
 
 }}}
 
+
+=== Get the template as string ===
+
+Just add `true` as third parameter.
+
+{{{
+
+$.tpl('tweet', {
+     id: tweet.id,
+     body: tweet.body,
+     from: tweet.screen_name,
+     timestamp: tweet.pub_time,
+     timesince: $.timeago(tweet.pub_time)
+}, true);
+
+}}}
+
+
+
 == calc ==
 
 === Basic usage ===
