@@ -39,7 +39,7 @@ http://api.flickr.com/services/feeds/photos_public.gne?id=30563648@N07&lang=en-u
 You have to change the *format* to json and specify a *jsoncallback*, which should make the URL looks like this;
 
 {{{
-http://api.flickr.com/services/feeds/photos_public.gne?id=30563648@N07&lang;=en-us&format;=json&jsoncallback;=?
+http://api.flickr.com/services/feeds/photos_public.gne?id=30563648@N07&lang;=en-us&format=json&jsoncallback;=?
 }}}
 
-In other words, replace `&format=rss_200` by `&format;=json&jsoncallback;=?_` and you're done.
+In other words, replace `&format=rss_200` by `&format=json&jsoncallback;=?_` and you're done.
