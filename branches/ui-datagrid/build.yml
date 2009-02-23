@@ -1,0 +1,64 @@
+title: jquery.utils
+version: 0.8.0
+svnrev: true
+dest: dist/
+modules:
+  - file: src/jquery.utils.js
+    name: "utils"
+    depends:
+      - src: src/jquery.utils.js
+      - src: src/jquery.strings.js
+      - src: src/jquery.anchorHandler.js
+      - src: src/jquery.arrayUtils.js
+      - src: src/jquery.cookie.js
+      - src: src/jquery.countdown.js
+      - src: src/jquery.cycle.js
+      - src: src/jquery.delayedObserver.js
+      - src: src/jquery.flash.js
+      - src: src/jquery.flickrshow.js
+      - src: src/jquery.i18n.js
+      - src: src/jquery.mousewheel.js
+      - src: src/jquery.slimbox.js
+      - src: src/jquery.timeago.js
+      - src: src/jquery.youtubeLinksToEmbed.js
+
+  - file: src/jquery.utils.js
+    name: "ui"
+    title: jquery.utils.ui
+    destfile: jquery.utils.ui.js
+    depends:
+      - src: src/jquery.utils.js
+      - src: src/jquery.strings.js
+      - src: src/jquery.anchorHandler.js
+      - src: src/jquery.arrayUtils.js
+      - src: src/jquery.cookie.js
+      - src: src/jquery.countdown.js
+      - src: src/jquery.cycle.js
+      - src: src/jquery.delayedObserver.js
+      - src: src/jquery.flash.js
+      - src: src/jquery.flickrshow.js
+      - src: src/jquery.i18n.js
+      - src: src/jquery.mousewheel.js
+      - src: src/jquery.slimbox.js
+      - src: src/jquery.timeago.js
+      - src: src/jquery.youtubeLinksToEmbed.js
+      - src: src/ui.dropslide.js
+      - src: src/ui.timepickr.js
+      - src: src/ui.toaster.js
+      - src: src/ui.masked.js
+merge:
+  - dest: dist/jquery.utils.css
+    files:
+      - src: src/css/ui.dropslide.css
+      - src: src/css/ui.timepickr.css
+      - src: src/css/ui.toaster.css
+
+zip:
+  - dest: downloads/jquery.utils-%v-standalone.zip
+    src: dist/
+    exclude: [".svn", "downloads"]
+
+gzip:
+  - dest: downloads/jquery.utils-%v-standalone.tar.gz
+    src: dist/
+    exclude: [".svn", "downloads"]
