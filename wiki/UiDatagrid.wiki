@@ -203,10 +203,10 @@ $.ui.datagrid.plugins.sortable = {
 || `_init` || `function` || Grid initialization (first method to be called) ||
 || `_fixCellIndex` || `int` || If the grid is 500px and it contains 3 cols of 40px, one of the cols must stretch in order to not break the layout. This property tells which cell to stretch counting from the right. (see the colhider plugin for an actual usageexample). ||
 || `_fixCellWidth` || `function` || This method is called to fix the aforementioned problem ||
-|| `_createDatagrid` || `function` || || This method is the main constructor method called to create a grid ||
-|| `_pluginsCall` || `function` || || Calls a method on each active plugins, arguments can be passed too ||
-|| `_createDatagridHeader` || `function` || || Builds the grid's header ||
-|| `_createDatagridBody` || `function` || || Builds the grid's body ||
-|| `_createRow` || `function` || || Creates and insert grid rows ||
-|| `_createCell` || `function` || || Creates and returns a grid cell (td or th) ||
-|| `_loadData` || `function` || || Load remote data from the specified backend, apply the specified pa ||
+|| `_createDatagrid` || `function` || This method is the main constructor method called to create a grid ||
+|| `_pluginsCall` || `function` || Calls a method on each active plugins, arguments can be passed too ||
+|| `_createDatagridHeader` || `function` || Builds the grid's header ||
+|| `_createDatagridBody` || `function` || Builds the grid's body ||
+|| `_createRow` || `function` || Creates and insert grid rows ||
+|| `_createCell` || `function` || Creates and returns a grid cell (td or th) ||
+|| `_loadData` || `function` || Load remote data from the specified backend, apply the specified pa ||
