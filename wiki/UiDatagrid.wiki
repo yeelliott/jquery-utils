@@ -42,9 +42,18 @@ Calling the grid is a lot like other grid system, which will hopefully make it e
 
 The grid's core have not a lot of options. More advanced options are or will be introduced via the plugin architecture.
 
+== Events ==
+
+=== Core events ===
+
+|| *Option* || *Description* ||
+|| refresh || Event triggered before refreshing the grid ||
+|| refreshed || Event triggered after refreshing the grid ||
+
+
 == Options ==
 
-=== Core ===
+=== Core options ===
 
 || *Option* || *Default* || *Description* ||
 || url || - || Backend URL ||
@@ -53,7 +62,7 @@ The grid's core have not a lot of options. More advanced options are or will be 
 || onError || function || Callback function for Ajax error handling ||
 || width || 500 || Grid's width (height is determined by the number of rows displayed) ||
 
-=== Plugins ===
+=== Plugins options ===
 
 Each plugin can add its own options and defaults;
 
