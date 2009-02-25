@@ -4,6 +4,7 @@
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
 || *Website* || http://haineault.com/media/jquery/ui-timepickr/page/ ||
 
+<wiki:toc max_depth="3" />
 
 == Introduction ==
 
