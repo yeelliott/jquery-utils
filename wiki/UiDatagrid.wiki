@@ -193,3 +193,22 @@ $.ui.datagrid.plugins.sortable = {
     }
 };
 }}}
+
+
+== Core properties ==
+
+|| *Property* || *Type* || * Description* ||
+|| `params` || `object` || Contains the parameters passed to the backend ||
+|| `bind` || `function` || Basically a shortcut for `widget.ui.wrapper.bind` ||
+|| `_init` || `function` || Grid initialization (first method to be called) ||
+|| `_fixCellIndex` || `int` || If the grid is 500px and it contains 3 cols of 40px, one of the cols must stretch in order to not break the layout. This property tells which cell to stretch counting from the right. (see the colhider plugin for an actual usageexample). ||
+|| `_fixCellWidth` || `function` || This method is called to fix the aforementioned problem ||
+|| `_createDatagrid` || This method is the main constructor method called to create a grid ||
+|| `_pluginsCall` || Calls a method on each active plugins, arguments can be passed too ||
+|| `_createDatagridHeader` || Builds the grid's header ||
+|| `_createDatagridBody` || Builds the grid's body ||
+|| `_createRow` || Creates and insert grid rows ||
+|| `_createCell` || Creates and returns a grid cell (td or th) ||
+|| `_loadData` || Load remote data from the specified backend, apply the specified pa ||
+
+
