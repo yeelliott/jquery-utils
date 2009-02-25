@@ -1,10 +1,12 @@
+<wiki:toc max_depth="3" />
+
 = ui.datagrid.js =
 
 || *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
 || *Website* || http://haineault.com/media/jquery/ui-timepickr/page/ ||
 
-<wiki:toc max_depth="3" />
+
 
 == Introduction ==
 
