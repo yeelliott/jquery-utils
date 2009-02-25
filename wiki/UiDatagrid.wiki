@@ -1,0 +1,186 @@
+= ui.datagrid.js =
+
+|| *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+|| *Website* || http://haineault.com/media/jquery/ui-timepickr/page/ ||
+
+
+== Introduction ==
+
+`ui.datagrid.js ` is, you guessed it, yet another jQuery grid plugin. It was inspired by other great grids plugins like [http://www.flexigrid.info/ flexigrid] and [http://www.trirand.com/jqgrid/jqgrid.html jqGrid].
+
+=== What makes it different ===
+
+All the grid I've tried have their advantages and weaknesses, here's how this one will differ;
+
+|| Strong plugin architecture || Basically every features is a grid plugin, the grid's core is less than 200 lines of code ||
+|| Getting events right || Whenever possible, the methods aren't called directly, they are triggered by events. This design helps to keep the code clean and small while making it easy to extend the grid's capabilities.  ||
+|| UI Widget || The grid follow jQuery UI theming standards, which makes it really easy to theme and customize. ||
+|| Code reuse || I try to reuse the maximum code I can. Most existing grid re-implement existing UI functionalities like dragging and resizing. This grid try to use jQuery and jQuery UI functionalities whenever it can. It allow to keep the code footprint really small, optimized and bug free. ||
+|| Documentation || I'll try to keep the API documentation up to date. Save for flexigrid, most grids are well documented for the actual usage, but most grid don't take account of plugin developers who would like to extend it. ||
+|| No virtual scroll || Most of grids system implement a buggy and awkward virtual scrolling supplemented by a pager. I decided to drop this feature in favor of consistency and simplicity. If you really need this feature you can A) implement it or B) use another grid system. ||
+
+
+== Basic usage ==
+
+=== Javascript ===
+
+{{{
+
+$('#demo').datagrid({
+    url: 'data/datagrid-test.json',
+    cols: [
+        {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'},
+        {label: 'Name', name: 'name', width: 40, sortable: true, align: 'left', hide: true}
+    ]
+});
+
+}}}
+
+Calling the grid is a lot like other grid system, which will hopefully make it easy to switch from a grid to another.
+
+The grid's core have not a lot of options. More advanced options are or will be introduced via the plugin architecture.
+
+== Options ==
+
+=== Core ===
+
+|| *Option* || *Default* || *Description* ||
+|| url || - || Backend URL ||
+|| method || 'get' || Method to use to pass the grid parameters to the backend ||
+|| dataType || 'json' || Data type to use. It's also used to specify the data parser, which is also extendable. ||
+|| onError || function || Callback function for Ajax error handling ||
+|| width || 500 || Grid's width (height is determined by the number of rows displayed) ||
+
+=== Plugins ===
+
+Each plugin can add its own options and defaults;
+
+|| *Option* || *Default* || *Description* ||
+|| colhider || true || Activate colhider ||
+|| sortable || true || Activate sortable cols ||
+|| ledger || true || Activate ledger ||
+
+== Available plugins ==
+
+|| *Name* || *Default* ||
+|| colhider || Provide a way to hide/show certain columns with a menu ||
+|| sortable || Provide a way to sort certain columns (still in dev) ||
+|| ledger || Apply alternate colors on rows. ||
+
+== Plugin authoring ==
+
+The plugin architecture makes it easy to add functionalities to the grid. I will use the _ledger_ plugin to illustrate how to achieve it.
+
+The first thing to do is to extend the `$.ui.datagrid.plugins` object. You can use `$.extend`, but the following syntax works as well and is more efficient;
+
+{{{
+
+$.ui.datagrid.plugins.pluginName = {
+    // you plugin here
+};
+
+}}}
+
+Grid plugins are basically a JavaScript object with triggers. At this point there is only two triggers; `_init` and `_ready` (see the following section for more details on these triggers).
+
+The triggers are executed with the grid's scope, which mean "this" refers to the grid itself.
+
+Now let's see how it really works;
+
+{{{
+
+$.ui.datagrid.plugins.ledger = {
+    // This trigger is called before the grid is built,
+    // making it possible to change every aspect of the grid through a plugin.
+    _init: function() {
+
+        // Like adding the default ledger option to the grid's default options;
+        this.options = $.extend({ledger: true}, this.options);
+    },
+    // This trigger is called after the grid is built, that's when you
+    // can actually work on it or tweak it;
+    _ready: function() {
+        var widget = this;
+        // "refresh" and "refreshed" are built-in grid events, 
+        // I'll let you guess when they are called.
+        widget.bind('refreshed.ledger', function() {
+            var i = 0;
+            // the grid object contains a "ui" object which itself
+            // contains the principal grid components like header, body and wrapper
+            widget.ui.body.find('tr').each(function(){
+                $(this).addClass(i % 2 && 'odd' || 'even');
+                i++;
+            });
+        });
+    }
+};
+
+}}}
+
+As you can see, the plugin architecture fully expose the grid object and provide necessary shortcuts to keep the plugins code concise and straightforward.
+
+It also makes it possible to override any of the grid property. It's something I don't really advise, but it can be useful in some cases.
+
+=== Plugin triggers ===
+
+|| *Trigger* || *Description* ||
+|| `_init` || This trigger is called at initialization time, when the grid not built yet. That's when you want to extend grid's default options, parsers or cellModifers.  ||
+|| `_ready` || This trigger is called when initialization is done. That's when you want to start inserting/modifying DOM elements.  ||
+
+=== Extending cells options ===
+
+When creating a grid, it's mandatory to specify the cells and how they behave.
+
+The `cols` options takes an array of object and each object is a cell descriptor containing modifiers, like this;
+
+{{{
+$('#demo').datagrid({
+    cols: [
+        {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'}
+    ]
+});
+}}}
+
+Cell descriptors are extensible through the plugin architecture as well. The grid provide only basic modifiers (label, align, width and hide).
+
+Let's see how the _label_ modifier works;
+
+{{{
+
+$.ui.datagrid.cellModifiers = {
+    label: function(el, cell, type){
+        el.find('div').text(cell.label);
+    }
+}
+
+}}}
+
+The modifiers are used solely to manipulate grid cells and, as you can see, it receive
+everything it needs to work as argument; the cell element, the cell options and the cell type (td or th).
+
+The rest is fairly self explanatory.
+
+Here's an actual example of how I extended modifiers to add sortable functionalities and style;
+
+{{{ 
+$.ui.datagrid.plugins.sortable = {
+    _init: function() {
+        widget = this;
+        widget.options = $.extend({sortable: true}, widget.options);
+        $.ui.datagrid.cellModifiers.sortable = function(el, cell, type){ 
+            if (type == 'th') { 
+                el.addClass('ui-sortable ui-state-default')
+                    .hover(function(){ $(this).addClass('ui-state-hover');}, 
+                           function(){ $(this).removeClass('ui-state-hover'); })
+                    .bind('click.sortable', function() {
+                        $(this).removeClass('ui-state-default').addClass('ui-tabs-selected ui-state-active')
+                            .siblings().removeClass('ui-tabs-selected ui-state-active').addClass('ui-state-default');
+                     });
+                $('<span class="ui-unsorted ui-icon ui-icon-triangle-2-n-s" />').prependTo(el); 
+            }
+        }
+    }
+};
+}}}
+
