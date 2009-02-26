@@ -115,13 +115,11 @@ $.ui.datagrid.plugins.ledger = {
         // "refresh" and "refreshed" are built-in grid events, 
         // I'll let you guess when they are called.
         widget.bind('refreshed.ledger', function() {
-            var i = 0;
             // the grid object contains a "ui" object which itself
             // contains the principal grid components like header, body and wrapper
-            widget.ui.body.find('tr').each(function(){
-                $(this).addClass(i % 2 && 'odd' || 'even');
-                i++;
-            });
+            widget.ui.body.find('tr')
+                .filter(':odd').addClass('odd').end()
+                .filter(':even').addClass('even');
         });
     }
 };
