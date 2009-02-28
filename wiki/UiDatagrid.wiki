@@ -2,24 +2,7 @@
 
 || *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
-|| *Website* || http://haineault.com/media/jquery/ui-timepickr/page/ ||
-
-== Introduction ==
-
-`ui.datagrid.js ` is, you guessed it, yet another jQuery grid plugin. It was inspired by other great grids plugins like [http://www.flexigrid.info/ flexigrid] and [http://www.trirand.com/jqgrid/jqgrid.html jqGrid].
-
-=== What makes it different ===
-
-All the grid I've tried have their advantages and weaknesses, here's how this one will differ;
-
-|| Strong plugin architecture || Basically every features is a grid plugin, the grid's core is less than 200 lines of code ||
-|| Getting events right || Whenever possible, the methods aren't called directly, they are triggered by events. This design helps to keep the code clean and small while making it easy to extend the grid's capabilities.  ||
-|| UI Widget || The grid follow jQuery UI theming standards, which makes it really easy to theme and customize. ||
-|| Code reuse || I try to reuse the maximum code I can. Most existing grid re-implement existing UI functionalities like dragging and resizing. This grid try to use jQuery and jQuery UI functionalities whenever it can. It allow to keep the code footprint really small, optimized and bug free. ||
-|| Documentation || I'll try to keep the API documentation up to date. Save for flexigrid, most grids are well documented for the actual usage, but most grid don't take account of plugin developers who would like to extend it. ||
-|| No virtual scroll || Most of grids system implement a buggy and awkward virtual scrolling supplemented by a pager. I decided to drop this feature in favor of consistency and simplicity. If you really need this feature you can A) implement it or B) use another grid system. ||
-|| Uses a single table element || Because of virtual scrolling, most grids uses multiple tables to render the grid body and the grid header/footer. Since this grid has no virtual scrolling, I was able to use a single table element and keep things somewhat semantically sane. ||
-|| IE ? || This grid wasn't designed with IE in mind, which makes it somewhat "hack free". It will most likely be adapted to IE, but every IE related hacks will be kept isolated in a seperated plugin, which will be executed only if the browser is IE. ||
+|| *Website* || http://haineault.com/media/jquery/ui-datagrid/page/ ||
 
 
 == Basic usage ==
