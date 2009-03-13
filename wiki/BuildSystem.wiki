@@ -53,6 +53,7 @@ svnrev: true
 dest: dist/
 modules:
   - file: src/input.file.js
+    name: 'myModuleName'
     depends:
       - src: src/jquery.plugin1.js
       - src: src/jquery.plugin2.js
@@ -78,11 +79,13 @@ version: 0.1
 dest: dist/
 modules:
   - file: src/input.file.js
+    name: 'myModuleName'
     depends:
       - src: src/jquery.plugin1.js
       - src: src/jquery.plugin2.js
 
   - file: src/input.file.js
+    name: 'myModuleNameExtra'
     title: input.file.extra
     destfile: input.file.ext.js
     depends:
@@ -104,6 +107,7 @@ title: build.title
 dest: dist/
 modules:
   - file: src/input.file.js
+    name: 'myModuleName'
     depends:
       - src: src/jquery.plugin1.js
       - src: src/jquery.plugin2.js
@@ -120,7 +124,7 @@ One may wonder why I don't use this to build module too. Well it's pretty simple
 
 === Creating archives ===
 
-I got tired of creating archives.. obviously, the %v is replaced by the version
+I also got tired of creating archives.. obviously, the %v is replaced by the version
 
 {{{
 
@@ -129,6 +133,7 @@ version: 0.1
 dest: dist/
 modules:
   - file: src/input.file.js
+    name: 'myModuleName'
     depends:
       - src: src/jquery.plugin1.js
       - src: src/jquery.plugin2.js
@@ -147,7 +152,15 @@ gzip:
 
 === Build specific modules ===
 
-The `-o` options allow to build only specified modules. Simply specify the modules names you want to build. For example, If you want to only build the standalone timepickr:
+The `-o` options allow to build only specified modules. Simply specify the modules `name` you want to build.
+
+{{{
+
+./build.py -m -o myModuleName
+
+}}}
+
+It's also possible to build multiple modules at once. For example, to build the standalone ui-timepickr I need to build `timepickr` and `uitimepickr`. It's simple as that:
 
 {{{
 
