@@ -34,7 +34,7 @@ $: ./build.py  -m
 == Options ==
 
 || *Option || *Long || *Description ||
-|| -o || -only || Build only specified modules (not working yet) ||
+|| -o || -only || Build only specified modules ||
 || -m || -minify || Create a minified version ||
 || -q || -quiet || Not output ||
 
@@ -145,6 +145,15 @@ gzip:
 
 }}}
 
+=== Build specific modules ===
+
+The `-o` options allow to build only specified modules. Simply specify the modules names you want to build. For example, If you want to only build the standalone timepickr:
+
+{{{
+
+./build.py -m -o timepickr -o uitimepickr
+
+}}}
 
 == Currently used build files ==
 
