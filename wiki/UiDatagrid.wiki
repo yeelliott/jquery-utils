@@ -1,4 +1,4 @@
-= ui.datagrid.js =
+= ui.hygrid.js =
 
 || *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
@@ -11,7 +11,7 @@
 
 {{{
 
-$('#demo').datagrid({
+$('#demo').hygrid({
     url: 'data/datagrid-test.json',
     cols: [
         {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'},
@@ -21,105 +21,72 @@ $('#demo').datagrid({
 
 }}}
 
-Calling the grid is a lot like other grid system, which will hopefully make it easy to switch from a grid to another.
 
-The grid's core have not a lot of options. More advanced options are or will be introduced via the plugin architecture.
+== Plugins ==
 
-== Events ==
+The plugin architecture is made in a even driven fashion, which make it easier to keep things clean and encapsulated. 
 
-=== Core events ===
+=== Available plugins ===
 
-|| *Option* || *Description* ||
-|| refresh || Event triggered before refreshing the grid ||
-|| refreshed || Event triggered after refreshing the grid ||
-
-
-== Options ==
-
-=== Core options ===
-
-|| *Option* || *Default* || *Description* ||
-|| url || - || Backend URL ||
-|| method || 'get' || Method to use to pass the grid parameters to the backend ||
-|| dataType || 'json' || Data type to use. It's also used to specify the data parser, which is also extendable. ||
-|| onError || function || Callback function for Ajax error handling ||
-|| width || 500 || Grid's width (height is determined by the number of rows displayed) ||
-
-=== Plugins options ===
-
-Each plugin can add its own options and defaults;
-
-|| *Option* || *Default* || *Description* ||
-|| colhider || true || Activate colhider ||
-|| sortable || true || Activate sortable cols ||
-|| ledger || true || Activate ledger ||
-
-== Available plugins ==
-
-|| *Name* || *Default* ||
+|| *Name* || *Description* ||
 || colhider || Provide a way to hide/show certain columns with a menu ||
 || sortable || Provide a way to sort certain columns (still in dev) ||
 || ledger || Apply alternate colors on rows. ||
+|| pagination || Show pagination options ||
+|| selectable || Allow row selection`*` ||
+|| editable || Allow row level edition`*` ||
+|| sortable || Sortable columns`*` ||
+|| trobber || Animation while loading data`*` ||
+|| search || General searching functionalities`*` ||
 
-== Plugin authoring ==
+`*` To come
 
-The plugin architecture makes it easy to add functionalities to the grid. I will use the _ledger_ plugin to illustrate how to achieve it.
-
-The first thing to do is to extend the `$.ui.datagrid.plugins` object. You can use `$.extend`, but the following syntax works as well and is more efficient;
-
-{{{
-
-$.ui.datagrid.plugins.pluginName = {
-    // you plugin here
-};
-
-}}}
-
-Grid plugins are basically a JavaScript object with triggers. At this point there is only two triggers; `_init` and `_ready` (see the following section for more details on these triggers).
-
-The triggers are executed with the grid's scope, which mean "this" refers to the grid itself.
-
-Now let's see how it really works;
+=== Basic plugin structure ===
 
 {{{
 
-$.ui.datagrid.plugins.ledger = {
-    // This trigger is called before the grid is built,
-    // making it possible to change every aspect of the grid through a plugin.
-    _init: function() {
-
-        // Like adding the default ledger option to the grid's default options;
-        this.options = $.extend({ledger: true}, this.options);
-    },
-    // This trigger is called after the grid is built, that's when you
-    // can actually work on it or tweak it;
-    _ready: function() {
-        var widget = this;
-        // "refresh" and "refreshed" are built-in grid events, 
-        // I'll let you guess when they are called.
-        widget.bind('refreshed.ledger', function() {
-            // the grid object contains a "ui" object which itself
-            // contains the principal grid components like header, body and wrapper
-            widget.ui.body.find('tr')
-                .filter(':odd').addClass('odd').end()
-                .filter(':even').addClass('even');
-        });
+$.ui.plugin.add('hygrid', 'pluginName', {
+    eventName: function(e, ui) {
+        // do stuff
     }
-};
+});
 
 }}}
 
-As you can see, the plugin architecture fully expose the grid object and provide necessary shortcuts to keep the plugins code concise and straightforward.
+Of course e is the event object and ui the plugin instance, which makes it possible to override any of the grid property.
 
-It also makes it possible to override any of the grid property. It's something I don't really advise, but it can be useful in some cases.
+=== Plugins options ===
 
-=== Plugin triggers ===
+Each plugin can add its own options and defaults, simply extend `$.ui.hygrid.defaults` like this;
 
-|| *Trigger* || *Description* ||
-|| `_init` || This trigger is called at initialization time, when the grid not built yet. That's when you want to extend grid's default options, parsers or cellModifers.  ||
-|| `_ready` || This trigger is called when initialization is done. That's when you want to start inserting/modifying DOM elements.  ||
+{{{
 
-=== Extending cells options ===
+$.ui.hygrid.defaults.pagination = true;
+
+// or if you have many defaults to add;
+
+$.extend($.ui.hygrid.defaults, {
+    pagination: true,
+    page: 1,
+    rpp: 10
+});
+
+}}}
+
+It's also possible to change options at initialization time. For example, the pagination plugin must ensure that the bottom toolbar is enabled in order to work properly. So if the user enable the pagination plugin it will automatically enable the toolbar, even if it's disabled.
+
+It can be achieved like this;
+
+{{{
+
+$.ui.plugin.add('hygrid', 'pagination', {
+    initialize: function(e, ui) {
+        ui.options.toolbarBottom = true;
+    }
+});
+}}}
+
+== Extending cells options ==
 
 When creating a grid, it's mandatory to specify the cells and how they behave.
 
@@ -152,42 +119,55 @@ everything it needs to work as argument; the cell element, the cell options and 
 
 The rest is fairly self explanatory.
 
-Here's an actual example of how I extended modifiers to add sortable functionalities and style;
 
-{{{ 
-$.ui.datagrid.plugins.sortable = {
-    _init: function() {
-        widget = this;
-        widget.options = $.extend({sortable: true}, widget.options);
-        $.ui.datagrid.cellModifiers.sortable = function(el, cell, type){ 
-            if (type == 'th') { 
-                el.addClass('ui-sortable ui-state-default')
-                    .hover(function(){ $(this).addClass('ui-state-hover');}, 
-                           function(){ $(this).removeClass('ui-state-hover'); })
-                    .bind('click.sortable', function() {
-                        $(this).removeClass('ui-state-default').addClass('ui-tabs-selected ui-state-active')
-                            .siblings().removeClass('ui-tabs-selected ui-state-active').addClass('ui-state-default');
-                     });
-                $('<span class="ui-unsorted ui-icon ui-icon-triangle-2-n-s" />').prependTo(el); 
-            }
-        }
-    }
-};
-}}}
 
+
+== Events ==
+
+|| *Event* ||  *Description* ||
+|| initialize || Triggered _before_ the grid is built. That's where you can extend or modify the grid ||
+|| initialized || Triggered when the grid is built and each plugins are initialized ||
+|| resized || Triggered after the grid have been resized ||
+|| gridupdated || Triggered when the content of the grid has changed ||
+|| coltoggled || Triggered when a column has been toggled ||
+|| dataloading || Triggered before making the Ajax request ||
+|| dataloaded || Triggered when the Ajax response has been recieved ||
+
+== Options ==
+
+=== Defaults ===
+
+|| *Option* || *Default* || *Description* ||
+|| url || false || Backend URL ||
+|| method || 'get' || Method to use to pass the grid parameters to the backend ||
+|| dataType || 'json' || Data type to use. It's also used to specify the data parser, which is also extendable. ||
+|| onError || function || Callback function for Ajax error handling ||
+|| width || 'auto' || Grid's width`*`  ||
+|| ajax || false || Use Ajax ||
+|| colhider || true || Activate colhider ||
+|| sortable || true || Activate sortable cols ||
+|| ledger || true || Activate ledger ||
+|| pagination || true || Activate pagination ||
+|| page || 1 || Current page (pagination) ||
+|| rpp || 10 || Rows per page (pagination) ||
+
+`*` height is determined by the number of rows displayed
 
 == Core properties ==
 
 || *Property* || *Type* || * Description* ||
-|| `params` || `object` || Contains the parameters passed to the backend ||
-|| `bind` || `function` || Basically a shortcut for `widget.ui.wrapper.bind` ||
+|| `params` || `function` || Returns the parameters passed to the backend as object ||
+|| `cols` || `function` || Returns the columns count (only the visible if true is specified) ||
+|| `col` || `function` || Return a column by index ||
+|| `row` || `function` || Return a row by index ||
+|| `cell` || `function` || Return a cell by x,y ||
+|| `cells` || `function` || Return grid's cells ||
 || `_init` || `function` || Grid initialization (first method to be called) ||
-|| `_fixCellIndex` || `int` || If the grid is 500px and it contains 3 cols of 40px, one of the cols must stretch in order to not break the layout. This property tells which cell to stretch counting from the right. (see the colhider plugin for an actual usageexample). ||
-|| `_fixCellWidth` || `function` || This method is called to fix the aforementioned problem ||
-|| `_createDatagrid` || `function` || This method is the main constructor method called to create a grid ||
-|| `_pluginsCall` || `function` || Calls a method on each active plugins, arguments can be passed too ||
-|| `_createDatagridHeader` || `function` || Builds the grid's header ||
-|| `_createDatagridBody` || `function` || Builds the grid's body ||
+problem ||
+|| `_trigger` || `function` || Trigger an event ||
+|| `_setGridWidth` || `function` || Apply the grid's width ||
 || `_createRow` || `function` || Creates and insert grid rows ||
 || `_createCell` || `function` || Creates and returns a grid cell (td or th) ||
-|| `_loadData` || `function` || Load remote data from the specified backend, apply the specified pa ||
+|| `_applyCellModifiers` || `function` || Applies cell modifiers to a given element ||
+|| `_getColOptions` || `function` || Returns col options for a given col ||
+|| `_` || `function` || Used to store/retrieve UI elements ||
