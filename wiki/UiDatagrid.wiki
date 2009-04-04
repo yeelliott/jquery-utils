@@ -176,13 +176,13 @@ The rest is fairly straight forward.
 || `row` || `(int) index OR (array) row` || Return a row by index or create a row ||
 || `cell` || `(int) x, (int) y, (bool) visible` || Return a cell by x, y position in the grid, if visible is true hidden cells will be ignored ||
 || `cells` || `(bool) visibleOnly` || Return grid's cells ||
-|| `_init` || `function` || Grid initialization (first method to be called) ||
+|| `_init` || ` ` || Grid initialization (first method to be called) ||
 problem ||
-|| `_trigger` || `function` || Trigger an event ||
-|| `_setGridWidth` || `function` || Apply the grid's width ||
-|| `_createRow` || `function` || Creates and insert grid rows ||
-|| `_createCell` || `function` || Creates and returns a grid cell (td or th) ||
-|| `_applyCellModifiers` || `function` || Applies cell modifiers to a given element ||
-|| `_setColOptions` || `function` || Sets col options for a given col ||
-|| `_getColOptions` || `function` || Returns col options for a given col ||
-|| `_` || `function` || Used to store/retrieve UI elements ||
+|| `_trigger` || `(string) type, (object) event, (object) ui` || Trigger an event ||
+|| `_setGridWidth` || ` ` || Apply the grid's width ||
+|| `_createRow` || `(array) cells` || Creates and insert grid rows ||
+|| `_createCell` || `(object) cell, (string) type` || Creates and returns a grid cell (td or th) ||
+|| `_applyCellModifiers` || `(object) el, (object) cell, (int) col` || Applies cell modifiers to a given element ||
+|| `_setColOptions` || `(int) index, (string) option, value` || Sets col options for a given col ||
+|| `_getColOptions` || `(int) index, (string) option` || Returns col options for a given col ||
+|| `_` || `(string) key, value` || Used to store/retrieve UI elements ||
