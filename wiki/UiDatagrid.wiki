@@ -167,15 +167,15 @@ The rest is fairly straight forward.
 
 `*` height is determined by the number of rows displayed
 
-== Core properties ==
+== Core methods ==
 
-|| *Property* || *Type* || * Description* ||
-|| `params` || `function` || Returns the parameters passed to the backend as object ||
-|| `cols` || `function` || Returns the columns count (only the visible if true is specified) ||
-|| `col` || `function` || Return a column by index ||
-|| `row` || `function` || Return a row by index ||
-|| `cell` || `function` || Return a cell by x,y ||
-|| `cells` || `function` || Return grid's cells ||
+|| *Property* || *Arguments* || * Description* ||
+|| `params` || `-` || Returns the parameters passed to the backend as object ||
+|| `cols` || `(bool) visible` || Returns the columns count (only the visible if true is specified) ||
+|| `col` || `(int) index, (bool) excludeHeaders` || Return a column by index ||
+|| `row` || `(int) index || (array) row` || Return a row by index or create a row ||
+|| `cell` || `(int) x, (int) y, (bool) visible` || Return a cell by x, y position in the grid, if visible is true hidden cells will be ignored ||
+|| `cells` || `(bool) visibleOnly` || Return grid's cells ||
 || `_init` || `function` || Grid initialization (first method to be called) ||
 problem ||
 || `_trigger` || `function` || Trigger an event ||
@@ -183,5 +183,6 @@ problem ||
 || `_createRow` || `function` || Creates and insert grid rows ||
 || `_createCell` || `function` || Creates and returns a grid cell (td or th) ||
 || `_applyCellModifiers` || `function` || Applies cell modifiers to a given element ||
+|| `_setColOptions` || `function` || Sets col options for a given col ||
 || `_getColOptions` || `function` || Returns col options for a given col ||
 || `_` || `function` || Used to store/retrieve UI elements ||
