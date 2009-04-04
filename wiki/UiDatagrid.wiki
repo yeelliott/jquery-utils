@@ -29,15 +29,15 @@ The plugin architecture is made in a even driven fashion, which make it easier t
 === Available plugins ===
 
 || *Name* || *Description* ||
-|| core || Core cell modifiers and event handling ||
-|| htmltable || Create hygrid from static html table ||
-|| ajax || Create hygrid from remote data ||
-|| caption || Grid title ||
-|| colhider || Provide a way to toggle columns ||
-|| ledger || Apply alternate colors on rows. ||
-|| pagination || Show pagination options ||
-|| selectable || Allow row selection ||
-|| debug || Output internal events ||
+|| `core` || Core cell modifiers and event handling ||
+|| `htmltable` || Create hygrid from static html table ||
+|| `ajax` || Create hygrid from remote data ||
+|| `caption` || Grid title ||
+|| `colhider` || Provide a way to toggle columns ||
+|| `ledger` || Apply alternate colors on rows. ||
+|| `pagination` || Show pagination options ||
+|| `selectable` || Allow row selection ||
+|| `debug` || Output internal events ||
 
 === Basic plugin structure ===
 
@@ -128,41 +128,42 @@ The rest is fairly straight forward.
 == Events ==
 
 || *Event* ||  *Description* ||
-|| initialize || Triggered _before_ the plugin are initialized. That's also where you can extend or modify the grid ||
-|| initialized || The grid is built and each plugins are initialized ||
-|| resized || The grid has been resized ||
-|| gridupdated || The content of the grid has changed ||
-|| coltoggled || A column has been toggled (toggled column is accessible via ui.toggledCol) ||
-|| dataloading || A ajax request has been made ||
-|| dataloaded || A ajax response has been loaded (recieved data is accessible via ui.recievedData) ||
-|| rowinsert || A row will be inserted ||
-|| rowinserted || A row has been inserted (inserted row is accessible via ui.insertedRow) ||
+|| `initialize` || Triggered _before_ the plugin are initialized. That's also where you can extend or modify the grid ||
+|| `initialized` || The grid is built and each plugins are initialized ||
+|| `resized` || The grid has been resized ||
+|| `gridupdated` || The content of the grid has changed ||
+|| `coltoggled` || A column has been toggled (toggled column is accessible via ui.toggledCol) ||
+|| `dataloading` || A ajax request has been made ||
+|| `dataloaded` || A ajax response has been loaded (recieved data is accessible via ui.recievedData) ||
+|| `rowinsert` || A row will be inserted ||
+|| `rowinserted` || A row has been inserted (inserted row is accessible via ui.insertedRow) ||
 
 == Options ==
 
 === Defaults ===
 
 || *Option* || *Default* || *Description* ||
-|| width || 'auto' || Grid's width`*`  ||
-|| debug || false || Output internal events ||
-|| core || true || Load core plugin ||
-|| toolbar || true || Show toolbar ||
-|| caption || false || Display specified caption ||
-|| ajax || false || Use Ajax ||
-|| url || false || Backend URL ||
-|| method || 'get' || Method to use to pass the grid parameters to the backend ||
-|| dataType || 'json' || Data type to use. It's also used to specify the data parser, which is also extendable. ||
-|| onError || function || Callback function for Ajax error handling ||
-|| colhider || true || Activate colhider ||
-|| sortable || true || Activate sortable cols ||
-|| ledger || true || Activate ledger ||
-|| pagination || true || Activate pagination ||
-|| page || 1 || Current page (pagination) ||
-|| rpp || 10 || Rows per page (pagination) ||
-|| rppSelect || [5, 10, 15, 20] || Show row per page selec box ||
-|| pager || '{start:d}-{end:d}/{total:d}, page: {page:d} of {pagetotal:d}' || Pager string (set to false to disable pager) ||
-|| total || 0 || Row count ||
-|| params || [] || Which options must be passed as request parameter ||
+|| `width` || `'auto'` || Grid's width`*`  ||
+|| `debug` || `false` || Output internal events ||
+|| `core` || `true` || Load core plugin ||
+|| `toolbar` || `true` || Show toolbar ||
+|| `caption` || `false` || Display specified caption ||
+|| `ajax` || `false` || Use Ajax ||
+|| `url` || `false` || Backend URL ||
+|| `method` || `'get'` || Method to use to pass the grid parameters to the backend ||
+|| `dataType` || `'json'` || Data type to use. It's also used to specify the data parser, which is also extendable. ||
+|| `onError` || `function` || Callback function for Ajax error handling ||
+|| `colhider` || `true` || Activate colhider ||
+|| `sortable` || `true` || Activate sortable cols ||
+|| `ledger` || `true` || Activate ledger ||
+|| `pagination` || `true` || Activate pagination ||
+|| `page` || `1` || Current page (pagination) ||
+|| `rpp` || `10` || Rows per page (pagination) ||
+|| `total` || `0` || Row count ||
+|| `rppSelect` || `[5, 10, 15, 20]` || Show row per page selec box ||
+|| `pager` || ''{start:d}-{end:d}/{total:d}, page: {page:d} of {pagetotal:d}'' || Pager string (set to false to disable pager) ||
+
+|| `params` || [] || Which options must be passed as request parameter ||
 
 
 `*` height is determined by the number of rows displayed
@@ -170,7 +171,7 @@ The rest is fairly straight forward.
 == Core methods ==
 
 || *Property* || *Arguments* || * Description* ||
-|| `params` || `-` || Returns the parameters passed to the backend as object ||
+|| `params` || ` ` || Returns the parameters passed to the backend as object ||
 || `cols` || `(bool) visible` || Returns the columns count (only the visible if true is specified) ||
 || `col` || `(int) index, (bool) excludeHeaders` || Return a column by index ||
 || `row` || `(int) index OR (array) row` || Return a row by index or create a row ||
