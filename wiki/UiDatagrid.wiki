@@ -173,7 +173,7 @@ The rest is fairly straight forward.
 || `params` || `-` || Returns the parameters passed to the backend as object ||
 || `cols` || `(bool) visible` || Returns the columns count (only the visible if true is specified) ||
 || `col` || `(int) index, (bool) excludeHeaders` || Return a column by index ||
-|| `row` || `(int) index || (array) row` || Return a row by index or create a row ||
+|| `row` || `(int) index OR (array) row` || Return a row by index or create a row ||
 || `cell` || `(int) x, (int) y, (bool) visible` || Return a cell by x, y position in the grid, if visible is true hidden cells will be ignored ||
 || `cells` || `(bool) visibleOnly` || Return grid's cells ||
 || `_init` || `function` || Grid initialization (first method to be called) ||
