@@ -162,7 +162,6 @@ The rest is fairly straight forward.
 || `total` || `0` || Row count ||
 || `rppSelect` || `[5, 10, 15, 20]` || Show row per page selec box ||
 || `pager` || `'{start:d}-{end:d}/{total:d}, page: {page:d} of {pagetotal:d}'` || Pager string (set to false to disable pager) ||
-
 || `params` || `[]` || Which options must be passed as request parameter ||
 
 
