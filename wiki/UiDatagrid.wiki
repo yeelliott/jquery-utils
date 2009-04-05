@@ -131,6 +131,7 @@ The rest is fairly straight forward.
 || `initialize` || Triggered _before_ the plugin are initialized. That's also where you can extend or modify the grid ||
 || `initialized` || The grid is built and each plugins are initialized ||
 || `resized` || The grid has been resized ||
+|| `gridrefresh` || The grid get rebuilt according to its current options ||
 || `gridupdated` || The content of the grid has changed ||
 || `coltoggled` || A column has been toggled (column is accessible via ui.toggledCol) ||
 || `dataloading` || A ajax request has been made ||
