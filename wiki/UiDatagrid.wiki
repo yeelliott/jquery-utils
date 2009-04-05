@@ -132,11 +132,15 @@ The rest is fairly straight forward.
 || `initialized` || The grid is built and each plugins are initialized ||
 || `resized` || The grid has been resized ||
 || `gridupdated` || The content of the grid has changed ||
-|| `coltoggled` || A column has been toggled (toggled column is accessible via ui.toggledCol) ||
+|| `coltoggled` || A column has been toggled (column is accessible via ui.toggledCol) ||
 || `dataloading` || A ajax request has been made ||
-|| `dataloaded` || A ajax response has been loaded (recieved data is accessible via ui.recievedData) ||
+|| `dataloaded` || A ajax response has been loaded (data is accessible via ui.recievedData) ||
 || `rowinsert` || A row will be inserted ||
-|| `rowinserted` || A row has been inserted (inserted row is accessible via ui.insertedRow) ||
+|| `rowinserted` || A row has been inserted (row is accessible via ui.insertedRow) ||
+|| `rowselect` || A row will be selected (row is accessible via ui.selectedRow) ||
+|| `rowselected` || A has beed selected (row is accessible via ui.selectedRow) ||
+|| `rowunselect` || A row will be unselected (row is accessible via ui.unselectedRow) ||
+|| `rowunselected` || A has beed unselected (row is accessible via ui.unselectedRow) ||
 
 == Options ==
 
