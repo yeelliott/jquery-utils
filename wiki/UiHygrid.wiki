@@ -37,7 +37,7 @@ The plugin architecture is made in a even driven fashion, which make it easier t
 || `ledger` || Apply alternate colors on rows. ||
 || `pagination` || Show pagination options ||
 || `selectable` || Allow row selection ||
-|| `debug` || Output internal events ||
+|| `search` || Search functionality ||
 
 === Basic plugin structure ===
 
