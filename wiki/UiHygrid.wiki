@@ -148,6 +148,8 @@ The rest is fairly straight forward.
 === Defaults ===
 
 || *Option* || *Default* || *Description* ||
+|| `debug` || `false` || Show events with context  ||
+|| `trace` || `false` || Show stack trace (debug will be enabled automatically if true) ||
 || `width` || `'auto'` || Grid's width`*`  ||
 || `debug` || `false` || Output internal events ||
 || `core` || `true` || Load core plugin ||
