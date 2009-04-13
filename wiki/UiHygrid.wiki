@@ -131,8 +131,8 @@ The rest is fairly straight forward.
 || `initialize` || Triggered _before_ the plugin are initialized. That's also where you can extend or modify the grid ||
 || `initialized` || The grid is built and each plugins are initialized ||
 || `resized` || The grid has been resized ||
-|| `gridrefresh` || The grid get rebuilt according to its current options ||
-|| `gridupdated` || The content of the grid has changed ||
+|| `refresh` || The grid get rebuilt according to its current options ||
+|| `updated` || The content of the grid has changed ||
 || `coltoggled` || A column has been toggled (column is accessible via ui.toggledCol) ||
 || `dataloading` || A ajax request has been made ||
 || `dataloaded` || A ajax response has been loaded (data is accessible via ui.recievedData) ||
@@ -142,6 +142,28 @@ The rest is fairly straight forward.
 || `rowselected` || A has beed selected (row is accessible via ui.selectedRow) ||
 || `rowunselect` || A row will be unselected (row is accessible via ui.unselectedRow) ||
 || `rowunselected` || A has beed unselected (row is accessible via ui.unselectedRow) ||
+
+Plugins uses events to manipulate the grid, but it's also possible to bind grid events externally. You simply have to add the prefix "grid" before the event name;
+
+{{{
+
+$('#mygrid').bind('gridrefresh', function() {
+    alert('The grid has been refreshed.');
+});
+
+}}}
+
+I'm not sure why, but it seems you have to use the same selector used to create the grid to bind events. So if you used `$('#mygrid').hygrid()`, using `$('.ui-hygrid').bind(...)` afterwards to bind grid events will not work.
+
+It's also possible to trigger events. Normally it would be possible to do `$('#mygrid').trigger('gridrefresh');` or something like that, however it does not work.. I had to expose the `_trigger` method;
+
+{{{
+
+$('#mygrid').hygrid('trigger', 'refresh');
+
+}}}
+
+Use this method until I figure out why a normal trigger don't work.
 
 == Options ==
 
@@ -184,6 +206,7 @@ The rest is fairly straight forward.
 || `cells` || `(bool) visibleOnly` || Return grid's cells ||
 || `_init` || ` ` || Grid initialization (first method to be called) ||
 problem ||
+|| `trigger` || `(string) type` || Public trigger method (temporary hopefully) ||
 || `_trigger` || `(string) type, (object) event, (object) ui` || Trigger an event ||
 || `_setGridWidth` || ` ` || Apply the grid's width ||
 || `_createRow` || `(array) cells` || Creates and insert grid rows ||
