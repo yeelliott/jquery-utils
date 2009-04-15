@@ -100,3 +100,7 @@ Use this method until I figure out why a normal trigger don't work.
 || `params` || `[]` || Which options must be passed as request parameter ||
 
 `*` height is determined by the number of rows displayed
+
+== Developers ==
+
+Documentation for hacking the grid is available [UiHygridDev here].
