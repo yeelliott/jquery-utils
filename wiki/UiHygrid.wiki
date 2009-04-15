@@ -11,12 +11,13 @@
 {{{
 
 $('#demo').hygrid({
-    url: 'data/datagrid-test.json',
+    url:  'php/backend.php', 
     cols: [
-        {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'},
-        {label: 'Name', name: 'name', width: 40, sortable: true, align: 'left', hide: true}
-    ]
-});
+        {label: 'ISO', name: 'iso', width: 40, align: 'center' }, 
+        {label: 'Name', name: 'name', width: 80, hide: true }, 
+        {label: 'Price', name: 'price', format: '{0:0.2f} $' } 
+    ] 
+}); 
 
 }}}
 
