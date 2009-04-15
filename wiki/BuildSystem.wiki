@@ -26,10 +26,8 @@ $: ./build.py  -m
 == Requirement ==
 
   * Linux (only tested on this OS ..)
-  * Java
   * Python
   * python-yaml
-  * zip (Linux command)
 
 == Options ==
 
