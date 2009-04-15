@@ -2,7 +2,6 @@
 
 || *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
 || *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
-|| *Website* || http://haineault.com/media/jquery/ui-datagrid/page/ ||
 
 
 == Basic usage ==
@@ -24,10 +23,6 @@ $('#demo').hygrid({
 
 == Plugins ==
 
-The plugin architecture is made in a even driven fashion, which make it easier to keep things clean and encapsulated. 
-
-=== Available plugins ===
-
 || *Name* || *Description* ||
 || `core` || Core cell modifiers and event handling ||
 || `htmltable` || Create hygrid from static html table ||
@@ -38,92 +33,6 @@ The plugin architecture is made in a even driven fashion, which make it easier t
 || `pagination` || Show pagination options ||
 || `selectable` || Allow row selection ||
 || `search` || Search functionality ||
-
-=== Basic plugin structure ===
-
-{{{
-
-$.ui.plugin.add('hygrid', 'pluginName', {
-    eventName: function(e, ui) {
-        // do stuff
-    }
-});
-
-}}}
-
-Of course e is the event object and ui the plugin instance, which makes it possible to override any of the grid property.
-
-=== Plugins options ===
-
-Each plugin can add its own options and defaults, simply extend `$.ui.hygrid.defaults` like this;
-
-{{{
-
-$.ui.hygrid.defaults.pagination = true;
-
-// or if you have many defaults to add;
-
-$.extend($.ui.hygrid.defaults, {
-    pagination: true,
-    page: 1,
-    rpp: 10
-});
-
-}}}
-
-It's also possible to change options at initialization time. For example, the pagination plugin must ensure that the bottom toolbar is enabled in order to work properly. So if the user enable the pagination plugin it will automatically enable the toolbar, even if it's disabled.
-
-It can be achieved like this;
-
-{{{
-
-$.ui.plugin.add('hygrid', 'pagination', {
-    initialize: function(e, ui) {
-        ui.options.toolbarBottom = true;
-    }
-});
-}}}
-
-== Extending cells options ==
-
-When creating a grid, it's mandatory to specify the cells and how they behave.
-
-The `cols` options takes an array of object and each object is a cell descriptor containing modifiers, like this;
-
-{{{
-$('#demo').datagrid({
-    cols: [
-        {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'}
-    ]
-});
-}}}
-
-Cell descriptors are extensible through the plugin architecture as well. The grid provide only basic modifiers (label, align, width and hide).
-
-Let's see how the _label_ modifier works;
-
-{{{
-
-$.ui.datagrid.cellModifiers = {
-
-    align: function(el, cell){ 
-        el.css('text-align', cell.align); 
-    },
-
-    format:  function(el, cell, type){ 
-        if (type == 'td') {
-            el.text($.format(cell.format, el.text())); 
-        }
-    }
-
-}
-
-}}}
-
-The modifiers are used solely to manipulate grid cells and grid headers. As you can see, it receive
-everything it needs to work as argument; the cell element, the cell options and the cell type (td or th).
-
-The rest is fairly straight forward.
 
 == Events ==
 
@@ -167,8 +76,6 @@ Use this method until I figure out why a normal trigger don't work.
 
 == Options ==
 
-=== Defaults ===
-
 || *Option* || *Default* || *Description* ||
 || `debug` || `false` || Output internal events with context  ||
 || `trace` || `false` || Show stack trace (debug will be enabled automatically if true) ||
@@ -192,26 +99,4 @@ Use this method until I figure out why a normal trigger don't work.
 || `pager` || `'{start:d}-{end:d}/{total:d}, page: {page:d} of {pagetotal:d}'` || Pager string (set to false to disable pager) ||
 || `params` || `[]` || Which options must be passed as request parameter ||
 
-
 `*` height is determined by the number of rows displayed
-
-== Core methods ==
-
-|| *Property* || *Arguments* || * Description* ||
-|| `params` || ` ` || Returns the parameters passed to the backend as object ||
-|| `cols` || `(bool) visible` || Returns the columns count (only the visible if true is specified) ||
-|| `col` || `(int) index, (bool) excludeHeaders` || Return a column by index ||
-|| `row` || `(int) index OR (array) row` || Return a row by index or create a row ||
-|| `cell` || `(int) x, (int) y, (bool) visible` || Return a cell by x, y position in the grid, if visible is true hidden cells will be ignored ||
-|| `cells` || `(bool) visibleOnly` || Return grid's cells ||
-|| `_init` || ` ` || Grid initialization (first method to be called) ||
-problem ||
-|| `trigger` || `(string) type` || Public trigger method (temporary hopefully) ||
-|| `_trigger` || `(string) type, (object) event, (object) ui` || Trigger an event ||
-|| `_setGridWidth` || ` ` || Apply the grid's width ||
-|| `_createRow` || `(array) cells` || Creates and insert grid rows ||
-|| `_createCell` || `(object) cell, (string) type` || Creates and returns a grid cell (td or th) ||
-|| `_applyCellModifiers` || `(object) el, (object) cell, (int) col` || Applies cell modifiers to a given element ||
-|| `_setColOptions` || `(int) index, (string) option, value` || Sets col options for a given col ||
-|| `_getColOptions` || `(int) index, (string) option` || Returns col options for a given col ||
-|| `_` || `(string) key, value` || Used to store/retrieve UI elements ||
