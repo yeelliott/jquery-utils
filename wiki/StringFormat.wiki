@@ -241,7 +241,6 @@ Note: if you pass/fail the test suite on other browser please send me your brows
 
  * -|+|\s flags handling
  * sprintf
- * proper escaping
  * repr should truncate using precision
  * jQuery.fn extention (jformat)
  * create documentation (when the API will be freezed)
