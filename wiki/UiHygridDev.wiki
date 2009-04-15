@@ -1,0 +1,90 @@
+= ui.hygrid.js =
+
+|| *Author* || Copyright (c) 2009 Maxime Haineault ([http://haineault.com haineault.com]) ||
+|| *License* || [http://www.opensource.org/licenses/mit-license.php MIT License] ||
+
+
+== Plugins ==
+
+=== Basic structure ===
+
+{{{
+
+$.ui.plugin.add('hygrid', 'pluginName', {
+    eventName: function(e, ui) {
+        // do stuff
+    }
+});
+
+}}}
+
+Of course e is the event object and ui the plugin instance, which makes it possible to override any of the grid property.
+
+=== Options ===
+
+Each plugin can add its own options and defaults, simply extend `$.ui.hygrid.defaults` like this;
+
+{{{
+
+$.ui.hygrid.defaults.pagination = true;
+
+// or if you have many defaults to add;
+
+$.extend($.ui.hygrid.defaults, {
+    pagination: true,
+    page: 1,
+    rpp: 10
+});
+
+}}}
+
+It's also possible to change options at initialization time. For example, the pagination plugin must ensure that the bottom toolbar is enabled in order to work properly. So if the user enable the pagination plugin it will automatically enable the toolbar, even if it's disabled.
+
+It can be achieved like this;
+
+{{{
+
+$.ui.plugin.add('hygrid', 'pagination', {
+    initialize: function(e, ui) {
+        ui.options.toolbarBottom = true;
+    }
+});
+}}}
+
+== Cell modifiers ==
+
+When creating a grid, it's mandatory to specify the cells and how they behave.
+
+The `cols` options takes an array of object and each object is a cell descriptor containing modifiers, like this;
+
+{{{
+$('#demo').hygrid({
+    cols: [
+        {label: 'ISO',  name: 'iso',  width: 40, sortable: true, align: 'center'}
+    ]
+});
+}}}
+
+Cell modifiers are extensible through the plugin architecture as well. The grid provide only basic modifiers (label, align, width and hide).
+
+Let's see how the `align` and `format` modifiers works;
+
+{{{
+
+$.ui.datagrid.cellModifiers = {
+
+    align: function(el, cell){ 
+        el.css('text-align', cell.align); 
+    },
+
+    format:  function(el, cell){ 
+        if (cell.isTD) {
+            el.text($.format(cell.format, el.text())); 
+        }
+    }
+
+}
+
+}}}
+
+The modifiers are used solely to manipulate grid cells and grid headers. As you can see, they receive everything they needs to work; the cell element and the cell options.
