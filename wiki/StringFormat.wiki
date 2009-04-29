@@ -128,6 +128,8 @@ $.UTF8decoe("Ã©"); // outputs "é"
 
 Format is an implementation of the  [http://www.python.org/dev/peps/pep-3101/ Python 3k Advanced String Formatting].
 
+*WARNING*: Currently this plugin conflicts with [http://docs.jquery.com/Plugins/Validation jquery.validation.js]. I'm not sure yet how I will address this issue.
+
 === Usage examples ===
 
 ==== Simple replacement ====
