@@ -25,6 +25,7 @@ A collection of some utilities I often re-use and didn't know where to put.
 || `$.delay` || int, function || jQuery ||  Chainable delay (for methods and animations) ||
 || `$.isArray` || mixed || boolean || Returns true if the given argument is an array ||
 || `$.isRegexp` || mixed || boolean || Returns true if the given argument is a regular expression ||
+|| `$.keyIs` || string event || Works with $.keyCode, ex: $.keyIs('up', e) will returns true if the keyCode is 38. ||
 || `$.pxToEm` || string, object || string || pxToEm converts a pixel value to ems depending on inherited font size ||
 || `$.range` || start, strop, steps || object || Returns a range object ||
 || `$.redirect` || string || - || Shortcut for `window.location.href = str;` ||
