@@ -13,12 +13,12 @@ Autocomplete fields is a common situation where this mechanism is useful. You mu
 
 {{{
 <input type="text" id="autocomplete" />
+}}}
 
-$(document).ready(function(){
-    $('#autocomplete').delayedObserver(0.8,
-        function(value, autocompleteObject) {
-            // AJAX call
-        }});
+{{{
+$('#autocomplete').delayedObserver(function(value, autocompleteObject) {
+    // AJAX call
+});
 }}}
 
 == Tested browsers ===
