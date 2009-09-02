@@ -8,13 +8,7 @@
 == Options ==
 
 || *Option*    || *Default* || *Description* ||
-|| `year`      || `now.getFullYear()` || Year value to countdown from, may be a four digits year representation (ex: 2009) or a functional argument (ex: y+2) ||
-|| `month`     || `now.getMonth()`    || Month value to countdown from (1 to 12) ||
-|| `week`      || `now.getDate()`     || Week value to countdown from (1 to 52) ||
-|| `day`       || `getWeek(now)`      || Day value to countdown from (1 to 31) ||
-|| `hour`      || `now.getHours()`    || Hour value to countdown from (0 to 23)  ||
-|| `min`       || `now.getMinutes()`  || Minute value to countdown from (0 to 59) ||
-|| `sec`       || `now.getSeconds()`  || Second value to countdown from (0 to 59) ||
+|| `date`      || - || JavaScript date object (ex; new Date("August 23, 2010 8:00:00")) ||
 || `msgFormat` || `'%d [day|days] %hh %mm %ss'` || Format of the countdown string (see _string format tokens below) ||
 || `msgNow`    || `'Now !'`           || String to display when reaching zero ||
 || `interval`  || `1000`              || Update interval in milliseconds ||
