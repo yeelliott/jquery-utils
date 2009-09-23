@@ -58,9 +58,9 @@ $(function(){
 </body>
 </html>
 
-*Note*: The `timepickr.css` file _must_ be loaded _after_ `jquery-ui-base.css`
-
 }}}
+
+*Note*: The `timepickr.css` file _must_ be loaded _after_ `jquery-ui-base.css`
 
 === Options ===
 
