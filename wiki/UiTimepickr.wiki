@@ -42,8 +42,8 @@ $(function(){
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <link rel="stylesheet" media="screen" href="images/jquery.timepickr.css" type="text/css" />
   <link title="theme" type="text/css" href="http://ui.jquery.com/applications/themeroller/css/jquery-ui-base.css.php?ctl=themeroller&amp;=" media="screen" rel="Stylesheet" id="themeCSS" />
+  <link rel="stylesheet" media="screen" href="images/jquery.timepickr.css" type="text/css" />
   <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript" src="js/jquery.ui.all.js"></script>
   <script type="text/javascript" src="js/jquery.timepickr.js"></script>
@@ -57,6 +57,8 @@ $(function(){
     <input id="timestart" type="text" value="09:00" />
 </body>
 </html>
+
+*Note*: The `timepickr.css` file _must_ be loaded _after_ `jquery-ui-base.css`
 
 }}}
 
